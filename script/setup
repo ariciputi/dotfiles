@@ -1,0 +1,18 @@
+#! /usr/bin/env bash
+
+DIR=$(dirname "$0")
+. $DIR/common.sh
+
+info "Starting Dotfiles setup..."
+
+substep_info "Moving to Dotfiles base directory..."
+cd "$DIR/.."
+
+# find all the setup files
+# select only regular files that are executable and not in the "script" dir
+find * -name "setup.sh" -type f -perm -u=x -not -wholename "script*" | while read setup_script; do
+     info "Running $setup_script ..."
+    ./$setup_script
+done
+
+success "Finished installing Dotfiles"
