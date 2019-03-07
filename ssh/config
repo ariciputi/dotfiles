@@ -1,0 +1,18 @@
+Host *
+  ConnectTimeout 5
+  AddKeysToAgent yes
+  UseKeychain yes
+
+Host wamba
+  Hostname 172.16.128.15
+  User andrea
+
+Host raspberry
+  Hostname 172.16.128.32
+  User pi
+
+Host bb
+  Compression yes
+  Hostname bitbucket.org
+  User hg
+
