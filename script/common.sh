@@ -4,6 +4,42 @@ is_darwin() { [ $(uname -s) = "Darwin" ] ; }
 
 is_linux() { [ $(uname -s) = "Linux" ] ; }
 
+create_relative_link() {
+    cd $HOME
+    LN_SOURCE=$(relative_path $HOME $1)
+    LN_TARGET=$2
+
+    symlink $LN_SOURCE $LN_TARGET 
+}
+
+deploy_config_files() {
+    local DEPLOY_DIR="$1"
+    rsync --archive --delete --delete-excluded --cvs-exclude --exclude-from=$SCRIPT_DIR/exclude_filter.rsync --quiet . $DEPLOY_DIR
+}
+
+create_deploy_dir() {
+    substep_info "Creating $1 directory..."
+    if [ -e "$1" ]; then
+        local backup_dir=$1.$(date -u +"%FT%T%Z").backup
+	substep_info "Dir already exists: creating backup at $backup_dir"
+        mv "$1" "$backup_dir"
+    fi
+    
+    mkdir -m "$2" "$1"
+}
+
+# Return relative path from canonical absolute dir path $1 to canonical
+# absolute dir path $2 ($1 and/or $2 may end with one or no "/").
+# Does only need POSIX shell builtins (no external command)
+relative_path () {
+    local common path up
+    common=${1%/} path=${2%/}/
+    while test "${path#"$common"/}" = "$path"; do
+        common=${common%/*} up=../$up
+    done
+    path=$up${path#"$common"/}; path=${path%/}; printf %s "${path:-.}"
+}
+
 symlink() {
     OVERWRITTEN=""
     if [ -e "$2" ] || [ -h "$2" ]; then

@@ -1,0 +1,18 @@
+# Exclude any dotfile (it shouldn't be any!)
+- .*
+
+# Exclude markdown files
+- *.md
+- *.MD
+
+# Exclude README files
+- README
+
+# Exclude anything resembling a ssh key
+- id_[dr]sa*
+
+# Exclude anything related to macOS Finder
+- .DS_Store
+
+# Exclude the setup.sh file itself
+- setup.sh
