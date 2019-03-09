@@ -5,11 +5,13 @@ is_darwin() { [ $(uname -s) = "Darwin" ] ; }
 is_linux() { [ $(uname -s) = "Linux" ] ; }
 
 create_relative_link() {
-    cd $HOME
-    LN_SOURCE=$(relative_path $HOME $1)
-    LN_TARGET=$2
+    local source_file target_file base_dir
+    base_dir=${3:-$HOME}
+    cd "$base_dir"
+    source_file=$(relative_path $base_dir $1)
+    target_file=$2
 
-    symlink $LN_SOURCE $LN_TARGET 
+    symlink $source_file $target_file 
 }
 
 deploy_config_files() {
@@ -19,13 +21,19 @@ deploy_config_files() {
 
 create_deploy_dir() {
     substep_info "Creating $1 directory..."
-    if [ -e "$1" ]; then
-        local backup_dir=$1.$(date -u +"%FT%T%Z").backup
+    local deploy_dir chmod_flags backup_dir 
+    deploy_dir=$1
+    if [ $# -eq 2 ]; then
+        chmod_flags="-m $2"
+    fi
+
+    if [ -e "$deploy_dir" ]; then
+        backup_dir=$deploy_dir.$(date -u +"%FT%T%Z").backup
 	substep_info "Dir already exists: creating backup at $backup_dir"
-        mv "$1" "$backup_dir"
+        mv "$deploy_dir" "$backup_dir"
     fi
     
-    mkdir -m "$2" "$1"
+    mkdir -p $chmod_flags "$deploy_dir"
 }
 
 # Return relative path from canonical absolute dir path $1 to canonical

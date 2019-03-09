@@ -5,8 +5,10 @@
 - *.md
 - *.MD
 
-# Exclude README files
+# Exclude README files and similar
 - README
+- LICENSE
+- MANIFEST
 
 # Exclude anything resembling a ssh key
 - id_[dr]sa*
