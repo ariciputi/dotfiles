@@ -4,6 +4,23 @@ is_darwin() { [ $(uname -s) = "Darwin" ] ; }
 
 is_linux() { [ $(uname -s) = "Linux" ] ; }
 
+create_relative_links() {
+    local source_dir target_dir files_to_link target_relative_path
+
+    source_dir=$1
+    target_dir=$2
+    files_to_link=$( cd "$source_dir"; ls )
+
+    target_relative_path=$(relative_path $target_dir $source_dir)
+
+    cd "$target_dir"
+
+    for item in $files_to_link; do
+        symlink "$target_relative_path/$item" "$item"
+    done
+    cd - > /dev/null
+}
+
 create_relative_link() {
     local source_file target_file base_dir
     base_dir=${3:-$HOME}
@@ -12,6 +29,8 @@ create_relative_link() {
     target_file=$2
 
     symlink $source_file $target_file 
+
+    cd - > /dev/null
 }
 
 deploy_config_files() {
@@ -19,21 +38,66 @@ deploy_config_files() {
     rsync --archive --delete --delete-excluded --cvs-exclude --exclude-from=$SCRIPT_DIR/exclude_filter.rsync --quiet . $DEPLOY_DIR
 }
 
-create_deploy_dir() {
-    substep_info "Creating $1 directory..."
-    local deploy_dir chmod_flags backup_dir 
-    deploy_dir=$1
-    if [ $# -eq 2 ]; then
-        chmod_flags="-m $2"
+create_dir() {
+    local new_dir strategy chmod_flags backup_dir
+    
+    new_dir=$1
+    strategy=$2
+    chmod_flags=${3:-$(printf '%o' $((0777 & ~$(umask))))}
+
+    if [ -e "$new_dir" ]; then
+        if [ "$strategy" = "backup" ]; then
+            backup_dir=$new_dir.$(date -u +"%FT%T%Z").backup
+    	    substep_info "Already exists: creating a backup at $backup_dir"
+            mv "$new_dir" "$backup_dir"
+    
+        elif [ "$strategy" = "delete" ]; then
+    	    substep_info "Already exists: deleting $new_dir"
+            rm -r "$new_dir"
+    
+        elif [ "$strategy" = "skip" ]; then
+    	    substep_info "$new_dir already exists: skipping."
+            return
+        else
+    	    substep_error "Strategy '$strategy' not allowed"
+        fi
     fi
 
-    if [ -e "$deploy_dir" ]; then
-        backup_dir=$deploy_dir.$(date -u +"%FT%T%Z").backup
-	substep_info "Dir already exists: creating backup at $backup_dir"
-        mv "$deploy_dir" "$backup_dir"
+    mkdir -p -m $chmod_flags "$new_dir"
+}
+
+create_dot_dir() {
+    local dot_dir chmod_flags
+
+    dot_dir=$1
+    chmod_flags=$2
+
+    if [ -h "$dot_dir" ]; then
+        create_dir "$dot_dir" "delete" "$chmod_flags"
+    elif [ -d "$dot_dir" ]; then
+        create_dir "$dot_dir" "skip" "$chmod_flags"
+    elif [ -e "$dot_dir" ]; then
+        create_dir "$dot_dir" "backup" "$chmod_flags"
     fi
-    
-    mkdir -p $chmod_flags "$deploy_dir"
+
+    substep_success "Created $1 directory."
+}
+
+create_deploy_dir() {
+    local deploy_dir chmod_flags
+
+    deploy_dir=$1
+    chmod_flags=$2
+
+    if [ -h "$deploy_dir" ]; then
+        create_dir "$deploy_dir" "delete" "$chmod_flags"
+    elif [ -d "$deploy_dir" ]; then
+        create_dir "$deploy_dir" "backup" "$chmod_flags"
+    elif [ -e "$dot_dir" ]; then
+        create_dir "$dot_dir" "backup" "$chmod_flags"
+    fi
+
+    substep_success "Created $1 directory."
 }
 
 # Return relative path from canonical absolute dir path $1 to canonical

@@ -14,6 +14,14 @@ create_deploy_dir $DEPLOY_DIR
 
 deploy_config_files $DEPLOY_DIR
 
-[ -d $HOME/.vim ] || mkdir $HOME/.vim
+create_dot_dir "$HOME/.vim"
 
-create_relative_link $DEPLOY_DIR/vimrc $HOME/.vim/vimrc $HOME/.vim
+if [ ! -e $HOME/.vim/bundle/Vundle.vim ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi
+
+create_relative_links $DEPLOY_DIR $HOME/.vim
+
+vim +PluginInstall +qall
+
+substep_success "Done with vim."
