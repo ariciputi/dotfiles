@@ -35,7 +35,7 @@ Plugin 'scrooloose/syntastic'                         " Syntax checking
 Plugin 'tpope/vim-capslock'                           " Capslock without capslock key
 Plugin 'milkypostman/vim-togglelist'                  " Open/close quicklist/locallist
 Plugin 'tpope/vim-surround'                           " Make changing surround chars easier
-Plugin 'altercation/vim-colors-solarized'             " Solarized colorscheme
+Plugin 'dracula/vim'                                  " Dracula colorscheme
 Plugin 'tpope/vim-dispatch'                           " Async task for vim
 Plugin 'janko-m/vim-test'                             " Run tests from inside vim
 
@@ -98,23 +98,15 @@ endif
 
 " Set color scheme
 set background=dark
-colorscheme solarized
-let g:solarized_termtrans=0
-let g:solarized_degrade=0
-let g:solarized_bold=1
-let g:solarized_underline=1
-let g:solarized_italic=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
-let g:solarized_diffmode="normal"
-let g:solarized_hitrail=0
-" set search highlight color to purple (not inverse)
-hi Search cterm=NONE ctermfg=5
+let g:dracula_italic = 0
+let g:dracula_colorterm = 0
+colorscheme dracula
 
-" Search highlight shortcut
-nnoremap <silent> <Leader>hh :set hlsearch! hlsearch?<CR> " Toggle highlighting
-nnoremap <Leader>hw :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR> " Highlight current word
+
+" Toggle search highlighting
+nnoremap <silent> <Leader>hh :set hlsearch! hlsearch?<CR>
+" Highlight current word
+nnoremap <Leader>hw :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
 " Folding settings
 set foldlevelstart=1    " Folding root level open
