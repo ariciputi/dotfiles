@@ -5,42 +5,29 @@ is_darwin() { [ $(uname -s) = "Darwin" ] ; }
 is_linux() { [ $(uname -s) = "Linux" ] ; }
 
 create_relative_links() {
-    local source_dir target_dir files_to_link target_relative_path
+    local source_dir target_dir files_to_link target_relative_path file_prefix
 
     source_dir=$1
     target_dir=$2
-    files_to_link=$( cd "$source_dir"; ls )
+    files_to_link=$( find "$source_dir" -depth 1 -type f -not -iname ".*" -not -iname "setup.sh" -not -iname "*.md" -not -iname "readme*" -exec basename {} \; | xargs echo )
 
     target_relative_path=$(relative_path $target_dir $source_dir)
 
     cd "$target_dir"
 
+    if [ "$target_dir" = "$HOME" ]; then
+        local file_prefix="."
+    fi
+
     for item in $files_to_link; do
-        symlink "$target_relative_path/$item" "$item"
+        symlink "$target_relative_path/$item" "$file_prefix""$item"
     done
     cd - > /dev/null
 }
 
-create_relative_link() {
-    local source_file target_file base_dir
-    base_dir=${3:-$HOME}
-    cd "$base_dir"
-    source_file=$(relative_path $base_dir $1)
-    target_file=$2
-
-    symlink $source_file $target_file 
-
-    cd - > /dev/null
-}
-
-deploy_config_files() {
-    local DEPLOY_DIR="$1"
-    rsync --archive --delete --delete-excluded --cvs-exclude --exclude-from=$SCRIPT_DIR/exclude_filter.rsync --quiet . $DEPLOY_DIR
-}
-
 create_dir() {
     local new_dir strategy chmod_flags backup_dir
-    
+
     new_dir=$1
     strategy=$2
     chmod_flags=${3:-$(printf '%o' $((0777 & ~$(umask))))}
@@ -50,11 +37,11 @@ create_dir() {
             backup_dir=$new_dir.$(date -u +"%FT%T%Z").backup
     	    substep_info "Already exists: creating a backup at $backup_dir"
             mv "$new_dir" "$backup_dir"
-    
+
         elif [ "$strategy" = "delete" ]; then
     	    substep_info "Already exists: deleting $new_dir"
             rm -r "$new_dir"
-    
+
         elif [ "$strategy" = "skip" ]; then
     	    substep_info "$new_dir already exists: skipping."
             return
@@ -78,23 +65,8 @@ create_dot_dir() {
         create_dir "$dot_dir" "skip" "$chmod_flags"
     elif [ -e "$dot_dir" ]; then
         create_dir "$dot_dir" "backup" "$chmod_flags"
-    fi
-
-    substep_success "Created $1 directory."
-}
-
-create_deploy_dir() {
-    local deploy_dir chmod_flags
-
-    deploy_dir=$1
-    chmod_flags=$2
-
-    if [ -h "$deploy_dir" ]; then
-        create_dir "$deploy_dir" "delete" "$chmod_flags"
-    elif [ -d "$deploy_dir" ]; then
-        create_dir "$deploy_dir" "backup" "$chmod_flags"
-    elif [ -e "$dot_dir" ]; then
-        create_dir "$dot_dir" "backup" "$chmod_flags"
+    else
+        create_dir "$dot_dir" "delete" "$chmod_flags"
     fi
 
     substep_success "Created $1 directory."
