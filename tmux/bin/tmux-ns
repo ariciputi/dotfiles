@@ -1,0 +1,27 @@
+#!/bin/sh
+
+session_name="$1"
+message=
+
+[ -n "$session_name" ] || session_name="main"
+
+if ! tmux ls -F "#S" | grep -q "$session_name"; then
+    # Start the session and give it the passed in name; also give the first window a name
+    tmux new-session -s "$session_name" -n "konsole" -d
+
+    # Create the standard windows I'm used to
+    tmux new-window -d -n "vim"
+    tmux new-window -d -n "workdir"
+    tmux new-window -d -n "ipython"
+    tmux new-window -d -n "sql"
+
+    # Select window #1 as the current windows
+    tmux select-window -t "$session_name:0"
+else
+    message="Session $session_name already exists; attaching to it"
+fi
+
+# Attach the client to the session just created
+# and display a message if the session already exists
+tmux -2 attach-session -t "$session_name" \; if-shell -F "$message" "display-message \"$message\""
+
