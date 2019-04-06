@@ -7,13 +7,13 @@
 ## https://github.com/rkalis/dotfiles/blob/master/macos/setup.sh
 ## https://github.com/nicksp/dotfiles/blob/master/osx/set-defaults.sh
 ## https://github.com/herrbischoff/awesome-macos-command-line
-## 
-## However messing around with preferences (via `defaults` command)
-## is fragile. Plist files are not meant to be a public interface 
-## to macOS and hence any settings can change from one OS version 
-## to the other without any warning. 
 ##
-## The more the preferences set via `defaults` the harder to 
+## However messing around with preferences (via `defaults` command)
+## is fragile. Plist files are not meant to be a public interface
+## to macOS and hence any settings can change from one OS version
+## to the other without any warning.
+##
+## The more the preferences set via `defaults` the harder to
 ## realize whether something doesn't work anymore on the next
 ## version of macOS, resulting in a hard to debug and maintain
 ## the present script.
@@ -74,13 +74,13 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
 # Expand printer panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true            
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
 
-# Avoid creating .DS_Store files on network or USB volumes 
+# Avoid creating .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
@@ -99,6 +99,16 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
 substep_info "Starting Mail again..."
 osascript -e 'tell application "Mail" to activate'
+
+###############################################################################
+# Terminal                                                                    #
+###############################################################################
+
+# Add Dracula theme to the Terminal
+open Dracula.terminal
+
+# Set Dracula theme as default
+osascript -e 'tell application "Terminal"' -e 'activate' -e 'set default settings to settings set "Dracula"' -e 'set startup settings to settings set "Dracula"' -e 'end tell'
 
 ###############################################################################
 # Finish up                                                                   #
