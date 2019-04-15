@@ -38,6 +38,7 @@ Plugin 'tpope/vim-surround'                           " Make changing surround c
 Plugin 'dracula/vim'                                  " Dracula colorscheme
 Plugin 'tpope/vim-dispatch'                           " Async task for vim
 Plugin 'janko-m/vim-test'                             " Run tests from inside vim
+Plugin 'dag/vim-fish'                                 " Support for fish-shell scripts
 
 
 " All of your Plugins must be added before the following line
