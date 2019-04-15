@@ -342,6 +342,7 @@ c.InteractiveShell.history_length = 100000
 
 ## Automatically set the terminal title
 #c.TerminalInteractiveShell.term_title = True
+c.TerminalInteractiveShell.term_title = False
 
 ## Customize the terminal title format.  This is a python format string.
 #  Available substitutions are: {cwd}.
