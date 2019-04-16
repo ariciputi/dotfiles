@@ -1,0 +1,29 @@
+-- Full documentation: https://www.postgresql.org/docs/11/app-psql.html
+
+-- disable output temporarily
+\set QUIET on
+
+\pset linestyle unicode
+\pset border 2
+\pset null ¤
+\pset format wrapped
+
+\timing
+
+\set PROMPT1 '%[%033[33;1m%]%x%[%033[0m%]%[%033[0;34m%]%n %m %[%033[0;32m%]%/%[%033[0m%]%R%# '
+
+-- keep a longer history
+\set HISTSIZE 9999
+
+-- keep inputs in the history once
+\set HISTCONTROL ignoredups
+
+-- always auto complete in lowercase
+\set COMP_KEYWORD_CASE lower
+
+\setenv PAGER less
+\setenv LESS -imFRX
+\setenv TERM xterm-256color
+
+-- output back on
+\set QUIET off
