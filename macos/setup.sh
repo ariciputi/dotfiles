@@ -50,6 +50,9 @@ fi
 substep_info "Moving to macos dir..."
 cd "$DIR/.."
 
+# Add /usr/local/sbin to the PATH (https://superuser.com/a/653811/1022668)
+sudo sh -c "echo /usr/local/sbin/ > /etc/paths.d/10.usr_local_sbin"
+
 # Remove quarantine attribute from application installed via Brewfile
 find /Applications -depth 1 -name '*.app' -xattrname com.apple.quarantine -exec xattr -dr com.apple.quarantine {} \;
 
