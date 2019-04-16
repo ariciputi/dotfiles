@@ -1,0 +1,27 @@
+{
+  "title": "Switch Karabiner profile",
+  "rules": [
+    {
+      "description": "Switch to developer profile",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "fn"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile 'Developer'"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
