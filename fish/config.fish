@@ -22,14 +22,13 @@ bind --user \en history-search-forward
 bind --user \eP history-token-search-backward
 bind --user \eN history-token-search-forward
 
-# One thing I find hard to get used to in fish is "\ce" to accept
-# the proposed command on the command line, and I don't either like
-# the Right Arrow (too far away on the keyboard). So I'm trying to
-# use Shift-Tab (back-tab or btab in terminfo parlance) and see if
-# I like it or not.
-# References here:
-# https://pubs.opengroup.org/onlinepubs/7908799/xcurses/terminfo.html
-# https://unix.stackexchange.com/questions/238406/why-does-shift-tab-result-in-escape-in-the-terminal
-# https://invisible-island.net/ncurses/man/terminfo.5.html
-#bind --user --key btab forward-char
-#bind --user --key btab forward-char
+# Alias
+alias llh="ls -ld .*" # list only dot files (long form)
+alias lv="/usr/share/vim/vim80/macros/less.sh"
+alias ..="cd .."
+
+# Set PATH
+set -x PATH $HOME/.local/bin $PATH
+
+# Set EDITOR
+set -x EDITOR 'vim'
