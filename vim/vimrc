@@ -3,6 +3,11 @@
 " Maintainer:	Andrea Riciputi <andrea.riciputi@gmail.com>
 "
 
+" I like fish, but vim doesn't
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+
 set nocompatible        " Vim is more than Vi
 filetype off " Required to prevent possible incompatibilities
 
