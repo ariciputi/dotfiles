@@ -21,7 +21,6 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 
 Plugin 'vim-scripts/IndexedSearch'                    " Display #/N matches when searching
-Plugin 'scrooloose/nerdtree'                          " Directory tree
 Plugin 'mrrech/ag.vim'                                " SilverSearcher (a.k.a faster grep)
 Plugin 'jlanzarotta/bufexplorer'                      " BufferExplorer
 Plugin 'chrisbra/csv.vim'                             " CSV plugin
