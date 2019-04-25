@@ -20,30 +20,42 @@ Plugin 'gmarik/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 
-Plugin 'vim-scripts/IndexedSearch'                    " Display #/N matches when searching
-Plugin 'mrrech/ag.vim'                                " SilverSearcher (a.k.a faster grep)
-Plugin 'jlanzarotta/bufexplorer'                      " BufferExplorer
-Plugin 'chrisbra/csv.vim'                             " CSV plugin
-Plugin 'kien/ctrlp.vim'                               " Ctrl-p fuzzy matcher
-Plugin 'rizzatti/dash.vim'                            " Dash - Vim integration
-Plugin 'jmcantrell/vim-diffchanges'                   " Shows changes since the last save
-Plugin 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
-Plugin 'mbertheau/jpythonfold.vim'                    " Better folding for Python
-Plugin 'scrooloose/nerdcommenter'                     " Make comment/uncomment easy
-Plugin 'vim-scripts/indentpython.vim'                 " Better Python indentation
-Plugin 'mrrech/python-syntax'                         " Better Python syntax highlighting
-Plugin 'luochen1990/rainbow'                          " Rainbow parenthesis
-Plugin 'mrrech/snipmate.vim'                          " Snippets
+" ----------------------------------------
+" Plugins I use to make Vim a better place
+" ----------------------------------------
+
 Plugin 'ervandew/supertab'                            " SuperTab
-Plugin 'scrooloose/syntastic'                         " Syntax checking
-Plugin 'tpope/vim-capslock'                           " Capslock without capslock key
+Plugin 'henrik/vim-indexed-search'                    " Display #/N matches when searching
+Plugin 'jlanzarotta/bufexplorer'                      " BufferExplorer
+Plugin 'jmcantrell/vim-diffchanges'                   " Shows changes since the last save
+Plugin 'luochen1990/rainbow'                          " Rainbow parenthesis
 Plugin 'milkypostman/vim-togglelist'                  " Open/close quicklist/locallist
+Plugin 'mrrech/snipmate.vim'                          " Snippets
+Plugin 'scrooloose/nerdcommenter'                     " Make comment/uncomment easy
+Plugin 'tpope/vim-capslock'                           " Capslock without capslock key
 Plugin 'tpope/vim-surround'                           " Make changing surround chars easier
 Plugin 'dracula/vim'                                  " Dracula colorscheme
+
+" --------------------------
+" File-type specific plugins
+" --------------------------
+
+Plugin 'chrisbra/csv.vim'                             " CSV plugin
+Plugin 'dag/vim-fish'                                 " Support for fish-shell scripts
+Plugin 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
+Plugin 'mbertheau/jpythonfold.vim'                    " Better folding for Python
+Plugin 'mrrech/python-syntax'                         " Better Python syntax highlighting
+Plugin 'vim-scripts/indentpython.vim'                 " Better Python indentation
+
+" ----------------------
+" External tools plugins
+" ----------------------
+
+Plugin 'mrrech/ag.vim'                                " SilverSearcher (a.k.a faster grep)
+Plugin 'rizzatti/dash.vim'                            " Dash - Vim integration
+Plugin 'scrooloose/syntastic'                         " Syntax checking
 Plugin 'tpope/vim-dispatch'                           " Async task for vim
 Plugin 'janko-m/vim-test'                             " Run tests from inside vim
-Plugin 'dag/vim-fish'                                 " Support for fish-shell scripts
-
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
