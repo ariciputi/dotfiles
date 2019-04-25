@@ -321,11 +321,6 @@ cnoreabbrev Qall qall
 " BufExplorer settings
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
 
-" NERDTree settings
-let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\~$']
-let NERDTreeQuitOnOpen=1
-nnoremap <silent> <Leader>nn :NERDTreeToggle<CR>
-
 " Ag.vim settings
 let g:ag_default_options="--column --smart-case"
 let g:aghighlight = 1
