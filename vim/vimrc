@@ -51,7 +51,7 @@ Plugin 'vim-scripts/indentpython.vim'                 " Better Python indentatio
 " External tools plugins
 " ----------------------
 
-Plugin 'mrrech/ag.vim'                                " SilverSearcher (a.k.a faster grep)
+Plugin 'mhinz/vim-grepper'                            " Grep-like tool integration
 Plugin 'rizzatti/dash.vim'                            " Dash - Vim integration
 Plugin 'scrooloose/syntastic'                         " Syntax checking
 Plugin 'tpope/vim-dispatch'                           " Async task for vim
@@ -285,6 +285,7 @@ nnoremap <silent> <Leader>bp :bprevious<CR>
 " Readline-like movements on the command line
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
+" shadow cmdline mode see :help cmdline-window (TODO assess this section)
 cnoremap <C-f> <Right>
 cnoremap <C-d> <Delete>
 cnoremap <M-b> <S-Left>
@@ -333,11 +334,38 @@ cnoreabbrev Qall qall
 " BufExplorer settings
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
 
-" Ag.vim settings
-let g:ag_default_options="--column --smart-case"
-let g:aghighlight = 1
-nnoremap <leader>aa :Ag! <cword> -w <CR>
-nnoremap <leader>at :AgFileType! <cword> -w <CR>
+" Grepper settings
+runtime plugin/grepper.vim    " initialize g:grepper with default values
+let g:grepper.tools = ['git', 'rg', 'grep'] " these tools are more than enough
+let g:grepper.highlight = 1   " always highlight found matches
+let g:grepper.searchreg = 1   " query is added to the last search register and search
+let g:grepper.dir = 'repo,filecwd' " search first the repo root
+let &statusline .= ' %{grepper#statusline()}' " add info to the status line
+
+" Grepper tools settings
+let g:grepper.rg.grepprg .= ' --smart-case'   " Always use smart-case when using rg
+
+" Grepper operator mappings
+nmap gs  <plug>(GrepperOperator)
+xmap gs  <plug>(GrepperOperator)
+
+" Grepper command mappings
+nnoremap <leader>gg :Grepper<cr>
+nnoremap <leader>gf  :Grepper -tool rg -cword -noprompt<cr>
+nnoremap <leader>gb  :Grepper -tool rg -cword -noprompt -buffers<cr>
+nnoremap <leader>gs  :Grepper -stop<cr>
+
+" Grepper command mappings depending from filetype
+augroup GrepperFileTypeMappings
+    autocmd!
+    autocmd FileType python nnoremap <buffer> <localleader>gt :Grepper -cword -noprompt -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case --type py<cr>
+augroup END
+
+" Grepper colors
+highlight GrepperPrompt ctermfg=160 guifg=#ff0000 cterm=NONE
+highlight qfFileName ctermfg=216 ctermbg=NONE cterm=NONE guifg=#ffaf87 guibg=NONE gui=NONE
+"highlight qfLineNr ctermfg=238 ctermbg=NONE cterm=NONE guifg=#444444 guibg=NONE gui=NONE
+"highlight qfSeparator ctermfg=243 ctermbg=NONE cterm=NONE guifg=#767676 guibg=NONE gui=NONE
 
 " Rainbow settings
 let g:rainbow_active = 1
