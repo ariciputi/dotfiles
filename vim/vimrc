@@ -39,6 +39,9 @@ Plugin 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
 
 " --------------------------
 " File-type specific plugins
+"
+" If you ever need other file-type specific plugins have a look at:
+" https://github.com/sheerun/vim-polyglot
 " --------------------------
 
 Plugin 'chrisbra/csv.vim'                             " CSV plugin
