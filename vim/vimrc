@@ -35,6 +35,7 @@ Plugin 'scrooloose/nerdcommenter'                     " Make comment/uncomment e
 Plugin 'tpope/vim-capslock'                           " Capslock without capslock key
 Plugin 'tpope/vim-surround'                           " Make changing surround chars easier
 Plugin 'dracula/vim'                                  " Dracula colorscheme
+Plugin 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
 
 " --------------------------
 " File-type specific plugins
@@ -382,6 +383,12 @@ let &statusline .= ' %{gutentags#statusline("[", "]")}'
 
 " Fugitive settings
 let &statusline .= ' %{FugitiveStatusline()}'
+
+" Yankstack settings
+let g:yankstack_map_keys = 0
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
+
 " Rainbow settings
 let g:rainbow_active = 1
 hi MatchParen ctermbg=0
