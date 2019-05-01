@@ -46,6 +46,7 @@ Plugin 'pangloss/vim-javascript'                      " Better Javascript syntax
 Plugin 'mbertheau/jpythonfold.vim'                    " Better folding for Python
 Plugin 'vim-python/python-syntax'                     " Better Python syntax highlighting
 Plugin 'vim-scripts/indentpython.vim'                 " Better Python indentation
+Plugin 'jeetsukumaran/vim-pythonsense'                " Better Python motion
 
 " ----------------------
 " External tools plugins
