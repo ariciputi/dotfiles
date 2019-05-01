@@ -54,6 +54,7 @@ Plugin 'jeetsukumaran/vim-pythonsense'                " Better Python motion
 
 Plugin 'mhinz/vim-grepper'                            " Grep-like tool integration
 Plugin 'rizzatti/dash.vim'                            " Dash - Vim integration
+Plugin 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
 Plugin 'scrooloose/syntastic'                         " Syntax checking
 Plugin 'tpope/vim-dispatch'                           " Async task for vim
 Plugin 'janko-m/vim-test'                             " Run tests from inside vim
@@ -146,9 +147,20 @@ set wildmode=longest,full
 set wildignore=*.pyc,*.obj
 set wildignorecase
 
-" Tags settings
-set tags+=tags;$HOME
-noremap <F12> :!ctags -R -o $(hg root)/tags --languages=python $(hg root)<CR>
+" Gutentags settings
+let g:gutentags_file_list_command = { 'markers': { '.git': 'git ls-files', '.hg': 'hg files' } }
+" Set Gutentags to index just python files when a python project is detected
+" (detection is performed by Gutentags itself; read `:help gutentags_project_info`
+" for more info). Also don't index 'import' occurences of any tags.
+let g:gutentags_ctags_executable_python = 'ctags --languages=python --python-kinds=-i'
+let &statusline .= ' %{gutentags#statusline("[", "]")}'
+" In case I opt-in for lightline plugin this will update the status line
+" properly. Temporarly commented out.
+"augroup MyGutentagsStatusLineRefresher
+    "autocmd!
+    "autocmd User GutentagsUpdating call lightline#update()
+    "autocmd User GutentagsUpdated call lightline#update()
+"augroup END
 
 
 "
