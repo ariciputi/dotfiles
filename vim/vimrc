@@ -146,21 +146,6 @@ set wildmenu
 set wildmode=longest,full
 set wildignorecase
 
-" Gutentags settings
-let g:gutentags_file_list_command = { 'markers': { '.git': 'git ls-files', '.hg': 'hg files' } }
-" Set Gutentags to index just python files when a python project is detected
-" (detection is performed by Gutentags itself; read `:help gutentags_project_info`
-" for more info). Also don't index 'import' occurences of any tags.
-let g:gutentags_ctags_executable_python = 'ctags --languages=python --python-kinds=-i'
-let &statusline .= ' %{gutentags#statusline("[", "]")}'
-" In case I opt-in for lightline plugin this will update the status line
-" properly. Temporarly commented out.
-"augroup MyGutentagsStatusLineRefresher
-    "autocmd!
-    "autocmd User GutentagsUpdating call lightline#update()
-    "autocmd User GutentagsUpdated call lightline#update()
-"augroup END
-
 
 "
 " Settings that require autocommands
@@ -378,6 +363,21 @@ highlight GrepperPrompt ctermfg=160 guifg=#ff0000 cterm=NONE
 highlight qfFileName ctermfg=216 ctermbg=NONE cterm=NONE guifg=#ffaf87 guibg=NONE gui=NONE
 "highlight qfLineNr ctermfg=238 ctermbg=NONE cterm=NONE guifg=#444444 guibg=NONE gui=NONE
 "highlight qfSeparator ctermfg=243 ctermbg=NONE cterm=NONE guifg=#767676 guibg=NONE gui=NONE
+
+" Gutentags settings
+let g:gutentags_file_list_command = { 'markers': { '.git': 'git ls-files', '.hg': 'hg files' } }
+" Set Gutentags to index just python files when a python project is detected
+" (detection is performed by Gutentags itself; read `:help gutentags_project_info`
+" for more info). Also don't index 'import' occurences of any tags.
+let g:gutentags_ctags_executable_python = 'ctags --languages=python --python-kinds=-i'
+let &statusline .= ' %{gutentags#statusline("[", "]")}'
+" In case I opt-in for lightline plugin this will update the status line
+" properly. Temporarly commented out.
+"augroup MyGutentagsStatusLineRefresher
+    "autocmd!
+    "autocmd User GutentagsUpdating call lightline#update()
+    "autocmd User GutentagsUpdated call lightline#update()
+"augroup END
 
 " Rainbow settings
 let g:rainbow_active = 1
