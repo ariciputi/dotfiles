@@ -52,6 +52,7 @@ Plugin 'jeetsukumaran/vim-pythonsense'                " Better Python motion
 " External tools plugins
 " ----------------------
 
+Plugin 'tpope/vim-fugitive'                           " Git integration
 Plugin 'mhinz/vim-grepper'                            " Grep-like tool integration
 Plugin 'rizzatti/dash.vim'                            " Dash - Vim integration
 Plugin 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
@@ -379,6 +380,8 @@ let &statusline .= ' %{gutentags#statusline("[", "]")}'
     "autocmd User GutentagsUpdated call lightline#update()
 "augroup END
 
+" Fugitive settings
+let &statusline .= ' %{FugitiveStatusline()}'
 " Rainbow settings
 let g:rainbow_active = 1
 hi MatchParen ctermbg=0
