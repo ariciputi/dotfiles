@@ -144,7 +144,6 @@ let g:SuperTabLongestEnhanced=1 " (default value: 0)
 " Wildmenu settings
 set wildmenu
 set wildmode=longest,full
-set wildignore=*.pyc,*.obj
 set wildignorecase
 
 " Gutentags settings
