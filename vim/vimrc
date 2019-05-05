@@ -47,6 +47,7 @@ Plugin 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
 Plugin 'chrisbra/csv.vim'                             " CSV plugin
 Plugin 'dag/vim-fish'                                 " Support for fish-shell scripts
 Plugin 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
+Plugin 'lifepillar/pgsql.vim'                         " PostgreSQL syntax and indent
 Plugin 'mbertheau/jpythonfold.vim'                    " Better folding for Python
 Plugin 'vim-python/python-syntax'                     " Better Python syntax highlighting
 Plugin 'vim-scripts/indentpython.vim'                 " Better Python indentation
@@ -398,8 +399,8 @@ hi MatchParen ctermbg=0
 
 " Python Enhanced Syntax Highlighting
 highlight def link pythonClassVar Special
-let python_version_2 = 1
-let python_highlight_all = 1
+let g:python_version_2 = 0
+let g:python_highlight_all = 1
 
 " Syntastic settings
 let g:syntastic_check_on_open=1
