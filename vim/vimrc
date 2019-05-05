@@ -61,7 +61,7 @@ Plugin 'tpope/vim-fugitive'                           " Git integration
 Plugin 'mhinz/vim-grepper'                            " Grep-like tool integration
 Plugin 'rizzatti/dash.vim'                            " Dash - Vim integration
 Plugin 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
-Plugin 'scrooloose/syntastic'                         " Syntax checking
+Plugin 'w0rp/ale'                                     " Syntax checking and linting
 Plugin 'tpope/vim-dispatch'                           " Async task for vim
 Plugin 'janko-m/vim-test'                             " Run tests from inside vim
 
@@ -402,17 +402,37 @@ highlight def link pythonClassVar Special
 let g:python_version_2 = 0
 let g:python_highlight_all = 1
 
-" Syntastic settings
-let g:syntastic_check_on_open=1
-let g:syntastic_auto_loc_list=2 " Open only when errors are detected
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['tcl'] }
-let g:syntastic_stl_format = '[%E{E: %e}%B{, }%W{W: %w}]'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_python_checkers = ['pyflakes']
-"let g:syntastic_debug = 3 " Enable debugging mode
-set statusline+=\ %{SyntasticStatuslineFlag()} " Append Syntastic status
+" ALE settings
+let g:ale_linters_explicit = 1                       " Only run linters explicitly enabled
+let g:ale_linters = { 'python': ['pylint'] }         " Enabled linters
+let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
+let g:ale_lint_on_save = 1                           " Run linters on file save
+let g:ale_open_list = 'on_save'                      " Open loclist on save only
+
+let g:ale_fixers = {'python': ['black']}             " Enabled fixers
+let g:ale_fix_on_save = 1                            " Run fixers on file save
+let g:ale_set_highlights = 0                         " Disable highlighting (signs are enough)
+
+" Automatically close loclist when buffer is closed
+augroup CloseLoclistWindowGroup
+    autocmd!
+    autocmd QuitPre * if empty(&buftype) | lclose | endif
+augroup END
+
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+let &statusline .= ' %{LinterStatus()}'
 
 " Vim-test settings
 let test#strategy = 'dispatch'
