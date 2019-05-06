@@ -113,9 +113,6 @@ set smartcase           " Foo matches Foo only
 set incsearch           " highlight search pattern while typing
 set hlsearch            " when done keep highlighting
 
-" Set statusline
-set statusline=%<%n\ %f\ %m\ %h%r%=\[%b,\0\x%B\]\ \[%{&ff}\]\ %-12.(%l,%c%V%)\ %P
-
 " Syntax highlighting settings
 if &t_Co > 2 || has("gui_running")
   syntax on
@@ -343,7 +340,6 @@ let g:grepper.tools = ['git', 'rg', 'grep'] " these tools are more than enough
 let g:grepper.highlight = 1   " always highlight found matches
 let g:grepper.searchreg = 1   " query is added to the last search register and search
 let g:grepper.dir = 'repo,filecwd' " search first the repo root
-let &statusline .= ' %{grepper#statusline()}' " add info to the status line
 
 " Grepper tools settings
 let g:grepper.rg.grepprg .= ' --smart-case'   " Always use smart-case when using rg
@@ -379,21 +375,9 @@ let g:gutentags_file_list_command = { 'markers': { '.git': 'git ls-files', '.hg'
 " (detection is performed by Gutentags itself; read `:help gutentags_project_info`
 " for more info). Also don't index 'import' occurences of any tags.
 let g:gutentags_ctags_executable_python = 'ctags --languages=python --python-kinds=-i'
-let &statusline .= ' %{gutentags#statusline("[", "]")}'
 
 let g:gutentags_define_advanced_commands = 1    " Enable advanced command (e.g. GutentagsToggleEnabled)
 nmap <leader>ct :GutentagsToggleEnabled<CR>
-
-" In case I opt-in for lightline plugin this will update the status line
-" properly. Temporarly commented out.
-"augroup MyGutentagsStatusLineRefresher
-    "autocmd!
-    "autocmd User GutentagsUpdating call lightline#update()
-    "autocmd User GutentagsUpdated call lightline#update()
-"augroup END
-
-" Fugitive settings
-let &statusline .= ' %{FugitiveStatusline()}'
 
 " Yankstack settings
 let g:yankstack_map_keys = 0
@@ -439,8 +423,6 @@ function! LinterStatus() abort
     \)
 endfunction
 
-let &statusline .= ' %{LinterStatus()}'
-
 " Vim-test settings
 let test#strategy = 'dispatch'
 let test#python#nose#options = '-s --no-color'
@@ -453,6 +435,25 @@ nmap <silent> <leader>tv :TestVisit<CR>
 " Session settings
 set sessionoptions=buffers,curdir,folds
 let g:session_autoload='no'
+
+"
+" Set the status line
+"
+
+set statusline=%<                                      " truncate line at the beginning if it is too long
+set statusline+=%n                                     " buffer number
+set statusline+=\ %f                                   " file name (relative)
+set statusline+=\ %m                                   " modified flag
+set statusline+=\ %h                                   " help buffer flag
+set statusline+=%r                                     " read-only buffer flag
+set statusline+=\ %{FugitiveStatusline()}              " show git information
+set statusline+=%=                                     " separation point between left and right
+set statusline+=\[%b,\0\x%B\]                          " value of the character under cursor (decimal, hex)
+set statusline+=\ \[%{&ff}\]                           " file-format
+set statusline+=\ %l,%c%V\ %P                          " line, column, virtual col, percentage
+set statusline+=\ %{grepper#statusline()}              " show grepper activity (if any)
+set statusline+=\ %{gutentags#statusline(\"[\",\"]\")} " show gutentags activity (if any)
+set statusline+=\ %{LinterStatus()}                    " show ALE information
 
 "
 " GUI specific settings
