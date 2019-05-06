@@ -394,7 +394,7 @@ let g:python_highlight_all = 1
 
 " ALE settings
 let g:ale_linters_explicit = 1                       " Only run linters explicitly enabled
-let g:ale_linters = { 'python': ['pylint'] }         " Enabled linters
+let g:ale_linters = { 'python': ['pylint'], 'sh': ['shellcheck'] }         " Enabled linters
 let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
 let g:ale_lint_on_save = 1                           " Run linters on file save
 let g:ale_open_list = 'on_save'                      " Open loclist on save only
