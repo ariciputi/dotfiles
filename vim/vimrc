@@ -371,12 +371,19 @@ highlight qfFileName ctermfg=216 ctermbg=NONE cterm=NONE guifg=#ffaf87 guibg=NON
 "highlight qfSeparator ctermfg=243 ctermbg=NONE cterm=NONE guifg=#767676 guibg=NONE gui=NONE
 
 " Gutentags settings
+let g:gutentags_enabled = 1                 " Enable gutentags...
+let g:gutentags_generate_on_missing = 0     " ...but don't write a tags file if not already there
+let g:gutentags_generate_on_new = 0         " ...unless you save the file.
 let g:gutentags_file_list_command = { 'markers': { '.git': 'git ls-files', '.hg': 'hg files' } }
 " Set Gutentags to index just python files when a python project is detected
 " (detection is performed by Gutentags itself; read `:help gutentags_project_info`
 " for more info). Also don't index 'import' occurences of any tags.
 let g:gutentags_ctags_executable_python = 'ctags --languages=python --python-kinds=-i'
 let &statusline .= ' %{gutentags#statusline("[", "]")}'
+
+let g:gutentags_define_advanced_commands = 1    " Enable advanced command (e.g. GutentagsToggleEnabled)
+nmap <leader>ct :GutentagsToggleEnabled<CR>
+
 " In case I opt-in for lightline plugin this will update the status line
 " properly. Temporarly commented out.
 "augroup MyGutentagsStatusLineRefresher
