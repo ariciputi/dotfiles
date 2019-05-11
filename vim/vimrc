@@ -33,6 +33,8 @@ Plugin 'scrooloose/nerdcommenter'                     " Make comment/uncomment e
 Plugin 'tpope/vim-capslock'                           " Capslock without capslock key
 Plugin 'tpope/vim-surround'                           " Make changing surround chars easier
 Plugin 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
+Plugin 'nathanaelkane/vim-indent-guides'              " Mark indentation level
+
 " ----------------------------------------
 " Color schemes
 " ----------------------------------------
@@ -431,6 +433,11 @@ function! LinterStatus() abort
     \   all_errors
     \)
 endfunction
+
+" Indent-guides settings
+let g:indent_guides_enable_on_vim_startup = 0
+let g:indent_guides_guide_size = 1
+let g:indent_guides_exclude_filetypes = ['help', 'terminal']
 
 " Vim-test settings
 let test#strategy = 'dispatch'
