@@ -33,8 +33,14 @@ Plugin 'mrrech/snipmate.vim'                          " Snippets
 Plugin 'scrooloose/nerdcommenter'                     " Make comment/uncomment easy
 Plugin 'tpope/vim-capslock'                           " Capslock without capslock key
 Plugin 'tpope/vim-surround'                           " Make changing surround chars easier
-Plugin 'dracula/vim'                                  " Dracula colorscheme
 Plugin 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
+" ----------------------------------------
+" Color schemes
+" ----------------------------------------
+
+Plugin 'dracula/vim'                                  " Dracula colorscheme
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'dikiaap/minimalist'
 
 " --------------------------
 " File-type specific plugins
@@ -121,8 +127,13 @@ endif
 set background=dark
 let g:dracula_italic = 0
 let g:dracula_colorterm = 0
-colorscheme dracula
 
+colorscheme dracula
+"set t_Co=256
+"syntax on
+"colorscheme minimalist
+"colorscheme solarized
+"colorscheme tomorrow-night-eighties
 
 " Toggle search highlighting
 nnoremap <silent> <Leader>hh :set hlsearch! hlsearch?<CR>
