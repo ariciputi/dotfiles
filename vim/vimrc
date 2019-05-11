@@ -29,7 +29,6 @@ Plugin 'henrik/vim-indexed-search'                    " Display #/N matches when
 Plugin 'jlanzarotta/bufexplorer'                      " BufferExplorer
 Plugin 'plytophogy/vim-diffchanges'                   " Shows changes since the last save
 Plugin 'luochen1990/rainbow'                          " Rainbow parenthesis
-Plugin 'mrrech/snipmate.vim'                          " Snippets
 Plugin 'scrooloose/nerdcommenter'                     " Make comment/uncomment easy
 Plugin 'tpope/vim-capslock'                           " Capslock without capslock key
 Plugin 'tpope/vim-surround'                           " Make changing surround chars easier
