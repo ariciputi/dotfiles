@@ -234,9 +234,10 @@ if has("autocmd")
                     \ endif
     augroup END
 
-    augroup TrailingSpaces " Remove any trailing whitespace
+    " Remove any trailing whitespace (except when the file is binary or when doing a merge)
+    augroup TrailingWhiteSpaces
         au!
-        autocmd BufRead,BufWrite * if !&bin | silent! %s/\s\+$//ge | endif
+        autocmd BufWritePre,FileWritePre * if !&bin && !&diff | %s/\s\+$//e | endif
     augroup END
 
 endif " has("autocmd")
@@ -529,11 +530,6 @@ else " Unkwon platform
 endif
 
 if &diff
-    if has("autocmd")
-        " Avoid trailing spaces removal when merging
-        autocmd! TrailingSpaces
-    endif
-
     set diffopt+=foldcolumn:0
     nnoremap <Leader>dp :diffput<CR>
     vnoremap <Leader>dp :diffput<CR>
