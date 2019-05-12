@@ -34,6 +34,7 @@ Plugin 'tpope/vim-capslock'                           " Capslock without capsloc
 Plugin 'tpope/vim-surround'                           " Make changing surround chars easier
 Plugin 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
 Plugin 'nathanaelkane/vim-indent-guides'              " Mark indentation level
+Plugin 'christoomey/vim-system-copy'                  " Integrate vim with system clipboard
 
 " ----------------------------------------
 " Color schemes
@@ -340,16 +341,6 @@ cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-Right><Delete>
 cnoremap <C-g> <C-c>
 
-"
-" Copy/Paste/Cut
-"
-if has('unnamedplus')
-      set clipboard=unnamed,unnamedplus
-endif
-noremap <Leader>yy "+yy<CR>
-noremap <Leader>x "+x<CR>
-noremap <Leader>p "+p<CR>
-
 " Open files shortcuts
 noremap <leader>ee :e <C-R>=expand("%:h") . "/" <CR>
 noremap <leader>ew :new %:p:h<CR>
@@ -521,12 +512,6 @@ endif
 " Platform specific settings
 "
 if s:uname == "Darwin"  " Mac specific stuff
-    " Copy and Paste settings
-    nnoremap <F6> :.w !pbcopy<CR><CR>
-    vnoremap <F6> :w !pbcopy<CR><CR>
-    nnoremap <F7> :r !pbpaste<CR>
-    inoremap <F7> <ESC>:r !pbpaste<CR>A
-
 elseif s:uname == "linux" " Linux specific stuff
 else " Unkwon platform
 endif
