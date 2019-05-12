@@ -290,8 +290,8 @@ nnoremap <C-p><C-p> :set invpaste paste?<CR>
 set pastetoggle=<C-p><C-p>
 
 " Create Blank Newlines and stay in Normal mode
-nnoremap <silent> <Leader>la m`o<Esc>``
-nnoremap <silent> <Leader>lA m`O<Esc>``
+nnoremap <silent> <Leader>la :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent> <Leader>lA :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Map window management shortcut
 nnoremap <silent> <Leader>wh <C-w>h
@@ -491,7 +491,7 @@ nnoremap <silent> <Leader>dp :DiffChangesPatchToggle<CR>
 " Set the status line
 "
 
-set statusline=%<                                      " truncate line at the beginning if it is too long
+set statusline=%<                                      " truncate line here if it is too long
 set statusline+=%n                                     " buffer number
 set statusline+=\ %f                                   " file name (relative)
 set statusline+=\ %m                                   " modified flag
@@ -499,7 +499,7 @@ set statusline+=\ %h                                   " help buffer flag
 set statusline+=%r                                     " read-only buffer flag
 set statusline+=\ %{FugitiveStatusline()}              " show git information
 set statusline+=%=                                     " separation point between left and right
-set statusline+=\[%b,\0\x%B\]                          " value of the character under cursor (decimal, hex)
+set statusline+=\[%b,\0\x%B\]                          " char-code under cursor (decimal, hex)
 set statusline+=\ \[%{&ff}\]                           " file-format
 set statusline+=\ %l,%c%V\ %P                          " line, column, virtual col, percentage
 set statusline+=\ %{grepper#statusline()}              " show grepper activity (if any)
