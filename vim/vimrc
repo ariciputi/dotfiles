@@ -485,6 +485,10 @@ nmap <silent> <leader>tv :TestVisit<CR>
 set sessionoptions=buffers,curdir,folds
 let g:session_autoload='no'
 
+" DiffChanges settings
+nnoremap <silent> <Leader>df :DiffChanges<CR>
+nnoremap <silent> <Leader>dt :DiffChangesDiffToggle<CR>
+nnoremap <silent> <Leader>dp :DiffChangesPatchToggle<CR>
 "
 " Set the status line
 "
@@ -529,13 +533,3 @@ elseif s:uname == "linux" " Linux specific stuff
 else " Unkwon platform
 endif
 
-if &diff
-    set diffopt+=foldcolumn:0
-    nnoremap <Leader>dp :diffput<CR>
-    vnoremap <Leader>dp :diffput<CR>
-else
-    " DiffChanges settings
-    nnoremap <silent> <Leader>df :DiffChanges<CR>
-    nnoremap <silent> <Leader>dt :DiffChangesDiffToggle<CR>
-    nnoremap <silent> <Leader>dp :DiffChangesPatchToggle<CR>
-endif
