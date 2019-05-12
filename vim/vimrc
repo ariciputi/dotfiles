@@ -54,8 +54,39 @@ Plugin 'chrisbra/csv.vim'                             " CSV plugin
 Plugin 'dag/vim-fish'                                 " Support for fish-shell scripts
 Plugin 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
 Plugin 'lifepillar/pgsql.vim'                         " PostgreSQL syntax and indent
-Plugin 'mbertheau/jpythonfold.vim'                    " Better folding for Python
+Plugin 'tmhedberg/SimpylFold'                         " Better folding for Python
 Plugin 'vim-python/python-syntax'                     " Better Python syntax highlighting
+
+" The PythonFoldText is ashamely stolen from https://github.com/mbertheau/jpythonfold.vim
+function! PythonFoldText()
+  let fs = v:foldstart
+  while getline(fs) =~ '^\s*@' | let fs = nextnonblank(fs + 1)
+  endwhile
+  let line = getline(fs)
+  let nnum = nextnonblank(fs + 1)
+  let nextline = getline(nnum)
+  "get the document string: next line is ''' or """
+  if nextline =~ "^\\s\\+[\"']\\{3}\\s*$"
+      let line = line . " " . matchstr(getline(nextnonblank(nnum + 1)), '^\s*\zs.*\ze$')
+  "next line starts with qoutes, and has text
+  elseif nextline =~ "^\\s\\+[\"']\\{1,3}"
+      let line = line." ".matchstr(nextline, "^\\s\\+[\"']\\{1,3}\\zs.\\{-}\\ze['\"]\\{0,3}$")
+  elseif nextline =~ '^\s\+pass\s*$'
+    let line = line . ' pass'
+  endif
+  "compute the width of the visible part of the window (see Note above)
+  let w = winwidth(0) - &foldcolumn - (&number ? 8 : 0) - (&signcolumn == 'no' ? 0 : 2)
+  let size = 1 + v:foldend - v:foldstart
+  "compute expansion string
+  let spcs = '................'
+  while strlen(spcs) < w | let spcs = spcs . spcs
+  endwhile
+  "expand tabs (mail me if you have tabstop>10)
+  let onetab = strpart('          ', 0, &tabstop)
+  let line = substitute(line, '\t', onetab, 'g')
+  return strpart(line.spcs, 0, w-strlen(size)-7).'.'.size.' lines'
+endfunction
+
 Plugin 'vim-scripts/indentpython.vim'                 " Better Python indentation
 Plugin 'jeetsukumaran/vim-pythonsense'                " Better Python motion
 
@@ -183,7 +214,7 @@ if has("autocmd")
         " shiftwidth == sw, softtabstop == sts, expandtab == et
         " formatoptions == fo, iskeyword == isk, textwidth == tw
         au!
-        autocmd FileType python setlocal tw=80 sw=4 sts=4 et fo-=t cc=99
+        autocmd FileType python setlocal tw=80 sw=4 sts=4 et fo-=t cc=99 foldtext=PythonFoldText()
         autocmd FileType javascript setlocal tw=80 ts=4 sw=4 sts=4 et fo-=t isk+="-,"
         autocmd FileType css setlocal tw=80 sw=4 sts=4 et fo-=t
         autocmd FileType html setlocal tw=80 sw=2 sts=2 et fo-=t
