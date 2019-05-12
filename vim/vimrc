@@ -55,7 +55,6 @@ Plugin 'dag/vim-fish'                                 " Support for fish-shell s
 Plugin 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
 Plugin 'lifepillar/pgsql.vim'                         " PostgreSQL syntax and indent
 Plugin 'tmhedberg/SimpylFold'                         " Better folding for Python
-Plugin 'vim-python/python-syntax'                     " Better Python syntax highlighting
 
 " The PythonFoldText is ashamely stolen from https://github.com/mbertheau/jpythonfold.vim
 function! PythonFoldText()
@@ -87,6 +86,8 @@ function! PythonFoldText()
   return strpart(line.spcs, 0, w-strlen(size)-7).'.'.size.' lines'
 endfunction
 
+"Plugin 'vim-python/python-syntax'                     " Better Python syntax highlighting
+Plugin 'file:///Users/andrea/Documents/Development/python-syntax'                     " Better Python syntax highlighting
 Plugin 'vim-scripts/indentpython.vim'                 " Better Python indentation
 Plugin 'jeetsukumaran/vim-pythonsense'                " Better Python motion
 
