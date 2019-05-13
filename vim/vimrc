@@ -9,40 +9,34 @@ if &shell =~# 'fish$'
 endif
 
 set nocompatible        " Vim is more than Vi
-filetype off " Required to prevent possible incompatibilities
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Keep Plugin commands between vundle#begin/end.
+Plug 'junegunn/vim-plug'                            " Required to have plug's docs available
 
 " ----------------------------------------
 " Plugins I use to make Vim a better place
 " ----------------------------------------
 
-Plugin 'ervandew/supertab'                            " SuperTab
-Plugin 'henrik/vim-indexed-search'                    " Display #/N matches when searching
-Plugin 'jlanzarotta/bufexplorer'                      " BufferExplorer
-Plugin 'plytophogy/vim-diffchanges'                   " Shows changes since the last save
-Plugin 'luochen1990/rainbow'                          " Rainbow parenthesis
-Plugin 'scrooloose/nerdcommenter'                     " Make comment/uncomment easy
-Plugin 'tpope/vim-capslock'                           " Capslock without capslock key
-Plugin 'tpope/vim-surround'                           " Make changing surround chars easier
-Plugin 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
-Plugin 'nathanaelkane/vim-indent-guides'              " Mark indentation level
-Plugin 'christoomey/vim-system-copy'                  " Integrate vim with system clipboard
+Plug 'ervandew/supertab'                            " SuperTab
+Plug 'henrik/vim-indexed-search'                    " Display #/N matches when searching
+Plug 'jlanzarotta/bufexplorer'                      " BufferExplorer
+Plug 'plytophogy/vim-diffchanges'                   " Shows changes since the last save
+Plug 'luochen1990/rainbow'                          " Rainbow parenthesis
+Plug 'scrooloose/nerdcommenter'                     " Make comment/uncomment easy
+Plug 'tpope/vim-capslock'                           " Capslock without capslock key
+Plug 'tpope/vim-surround'                           " Make changing surround chars easier
+Plug 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
+Plug 'nathanaelkane/vim-indent-guides'              " Mark indentation level
+Plug 'christoomey/vim-system-copy'                  " Integrate vim with system clipboard
 
 " ----------------------------------------
 " Color schemes
 " ----------------------------------------
 
-Plugin 'dracula/vim'                                  " Dracula colorscheme
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'dikiaap/minimalist'
+Plug 'dracula/vim'                                  " Dracula colorscheme
+Plug 'altercation/vim-colors-solarized'
+Plug 'dikiaap/minimalist'
 
 " --------------------------
 " File-type specific plugins
@@ -51,11 +45,11 @@ Plugin 'dikiaap/minimalist'
 " https://github.com/sheerun/vim-polyglot
 " --------------------------
 
-Plugin 'chrisbra/csv.vim'                             " CSV plugin
-Plugin 'dag/vim-fish'                                 " Support for fish-shell scripts
-Plugin 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
-Plugin 'lifepillar/pgsql.vim'                         " PostgreSQL syntax and indent
-Plugin 'tmhedberg/SimpylFold'                         " Better folding for Python
+Plug 'chrisbra/csv.vim'                             " CSV plugin
+Plug 'dag/vim-fish'                                 " Support for fish-shell scripts
+Plug 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
+Plug 'lifepillar/pgsql.vim'                         " PostgreSQL syntax and indent
+Plug 'tmhedberg/SimpylFold'                         " Better folding for Python
 
 " The PythonFoldText is ashamely stolen from https://github.com/mbertheau/jpythonfold.vim
 function! PythonFoldText()
@@ -87,26 +81,25 @@ function! PythonFoldText()
   return strpart(line.spcs, 0, w-strlen(size)-7).'.'.size.' lines'
 endfunction
 
-"Plugin 'vim-python/python-syntax'                     " Better Python syntax highlighting
-Plugin 'file:///Users/andrea/Documents/Development/python-syntax'                     " Better Python syntax highlighting
-Plugin 'vim-scripts/indentpython.vim'                 " Better Python indentation
-Plugin 'jeetsukumaran/vim-pythonsense'                " Better Python motion
+"Plug 'vim-python/python-syntax'                     " Better Python syntax highlighting
+Plug '~/Documents/Development/python-syntax'        " Better Python syntax highlighting
+Plug 'vim-scripts/indentpython.vim'                 " Better Python indentation
+Plug 'jeetsukumaran/vim-pythonsense'                " Better Python motion
 
 " ----------------------
 " External tools plugins
 " ----------------------
 
-Plugin 'tpope/vim-fugitive'                           " Git integration
-Plugin 'mhinz/vim-grepper'                            " Grep-like tool integration
-Plugin 'rizzatti/dash.vim'                            " Dash - Vim integration
-Plugin 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
-Plugin 'w0rp/ale'                                     " Syntax checking and linting
-Plugin 'tpope/vim-dispatch'                           " Async task for vim
-Plugin 'janko-m/vim-test'                             " Run tests from inside vim
+Plug 'tpope/vim-fugitive'                           " Git integration
+Plug 'mhinz/vim-grepper'                            " Grep-like tool integration
+Plug 'rizzatti/dash.vim'                            " Dash - Vim integration
+Plug 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
+Plug 'w0rp/ale'                                     " Syntax checking and linting
+Plug 'tpope/vim-dispatch'                           " Async task for vim
+Plug 'janko-m/vim-test'                             " Run tests from inside vim
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()            " required
 
 "
 " Platform recognition settings
