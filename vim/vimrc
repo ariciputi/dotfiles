@@ -29,14 +29,7 @@ Plug 'tpope/vim-surround'                           " Make changing surround cha
 Plug 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
 Plug 'nathanaelkane/vim-indent-guides'              " Mark indentation level
 Plug 'christoomey/vim-system-copy'                  " Integrate vim with system clipboard
-
-" ----------------------------------------
-" Color schemes
-" ----------------------------------------
-
-Plug 'dracula/vim'                                  " Dracula colorscheme
-Plug 'altercation/vim-colors-solarized'
-Plug 'dikiaap/minimalist'
+Plug 'nanotech/jellybeans.vim'                      " Colorscheme (at last!)
 
 " --------------------------
 " File-type specific plugins
@@ -102,6 +95,40 @@ Plug 'janko-m/vim-test'                             " Run tests from inside vim
 call plug#end()            " required
 
 "
+" Color scheme settings
+"
+
+augroup ColorSchemeCustomization
+      au!
+      autocmd ColorScheme jellybeans hi CursorLine cterm=underline ctermbg='NONE'
+      autocmd ColorScheme jellybeans hi Folded ctermfg=241 ctermbg='NONE'
+      autocmd ColorScheme jellybeans hi clear Search
+      autocmd ColorScheme jellybeans hi clear IncSearch
+      autocmd ColorScheme jellybeans hi Search term=reverse cterm=reverse gui=reverse
+      autocmd ColorScheme jellybeans hi IncSearch term=reverse cterm=reverse gui=reverse
+      autocmd ColorScheme jellybeans hi SignColumn ctermbg='NONE'
+      autocmd ColorScheme jellybeans hi! link Todo PreProc
+      autocmd ColorScheme jellybeans hi! link pythonStrFormatting Constant
+      autocmd ColorScheme jellybeans hi! link pythonClassVar PreCondit
+      autocmd ColorScheme jellybeans hi ALEErrorSign ctermfg=1 ctermbg='NONE'
+      autocmd ColorScheme jellybeans hi ALEWarningSign ctermfg=3 ctermbg='NONE'
+      autocmd ColorScheme jellybeans hi ALEInfoSign ctermfg=2 ctermbg='NONE'
+      autocmd ColorScheme jellybeans hi ErrorMsg ctermfg=88 ctermbg='NONE'
+      autocmd ColorScheme jellybeans hi DiffAdd ctermfg=70 ctermbg=235
+      autocmd ColorScheme jellybeans hi DiffDelete ctermfg=124 ctermbg=235
+      autocmd ColorScheme jellybeans hi DiffChange ctermfg=3 ctermbg=235
+      autocmd ColorScheme jellybeans hi DiffText cterm=underline ctermfg=3 ctermbg=235
+      autocmd ColorScheme jellybeans hi StatusLine ctermfg=16 ctermbg=141
+      autocmd ColorScheme jellybeans hi StatusLineNC ctermfg=231 ctermbg=244
+augroup END
+
+let g:jellybeans_overrides = {
+            \ 'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+            \}
+
+colorscheme jellybeans
+
+"
 " Platform recognition settings
 "
 let s:uname=''
@@ -149,18 +176,6 @@ set hlsearch            " when done keep highlighting
 if &t_Co > 2 || has("gui_running")
   syntax on
 endif
-
-" Set color scheme
-set background=dark
-let g:dracula_italic = 0
-let g:dracula_colorterm = 0
-
-colorscheme dracula
-"set t_Co=256
-"syntax on
-"colorscheme minimalist
-"colorscheme solarized
-"colorscheme tomorrow-night-eighties
 
 " Toggle search highlighting
 nnoremap <silent> <Leader>hh :set hlsearch! hlsearch?<CR>
@@ -471,6 +486,7 @@ let g:session_autoload='no'
 nnoremap <silent> <Leader>df :DiffChanges<CR>
 nnoremap <silent> <Leader>dt :DiffChangesDiffToggle<CR>
 nnoremap <silent> <Leader>dp :DiffChangesPatchToggle<CR>
+
 "
 " Set the status line
 "
