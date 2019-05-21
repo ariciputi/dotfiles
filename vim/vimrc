@@ -339,9 +339,6 @@ nnoremap <silent> <Leader>bp :bprevious<CR>
 
 " Readline-like movements on the command line
 cnoremap <C-a> <Home>
-cnoremap <C-b> <Left>
-" shadow cmdline mode see :help cmdline-window (TODO assess this section)
-cnoremap <C-f> <Right>
 cnoremap <C-d> <Delete>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
