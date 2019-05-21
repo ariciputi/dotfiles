@@ -405,8 +405,7 @@ augroup END
 " Grepper colors
 highlight GrepperPrompt ctermfg=160 guifg=#ff0000 cterm=NONE
 highlight qfFileName ctermfg=216 ctermbg=NONE cterm=NONE guifg=#ffaf87 guibg=NONE gui=NONE
-"highlight qfLineNr ctermfg=238 ctermbg=NONE cterm=NONE guifg=#444444 guibg=NONE gui=NONE
-"highlight qfSeparator ctermfg=243 ctermbg=NONE cterm=NONE guifg=#767676 guibg=NONE gui=NONE
+highlight QuickFixLine cterm=underline ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 " Gutentags settings
 let g:gutentags_enabled = 1                 " Enable gutentags...
