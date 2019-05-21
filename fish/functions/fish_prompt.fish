@@ -36,7 +36,7 @@ function fish_prompt --description 'Write out the prompt'
     set_color normal
     printf ' in '
 
-    set_color D783FF # pale purple
+    set_color DC8FFF # pale purple
     printf '%s' (prompt_pwd)
     set_color normal
 
