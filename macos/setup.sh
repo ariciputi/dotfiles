@@ -107,11 +107,11 @@ osascript -e 'tell application "Mail" to activate'
 # Terminal                                                                    #
 ###############################################################################
 
-# Add Dracula theme to the Terminal
-open Dracula.terminal
+# Add Jellybeans theme to the Terminal
+open Jellybeans.terminal
 
-# Set Dracula theme as default
-osascript -e 'tell application "Terminal"' -e 'activate' -e 'set default settings to settings set "Dracula"' -e 'set startup settings to settings set "Dracula"' -e 'end tell'
+# Set Jellybeans theme as default
+osascript -e 'tell application "Terminal"' -e 'activate' -e 'set default settings to settings set "Jellybeans"' -e 'set startup settings to settings set "Jellybeans"' -e 'end tell'
 
 ###############################################################################
 # Finish up                                                                   #
