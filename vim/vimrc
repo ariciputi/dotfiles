@@ -79,6 +79,9 @@ augroup ColorSchemeCustomization
       autocmd ColorScheme jellybeans hi SignColumn ctermbg='NONE'
       autocmd ColorScheme jellybeans hi! link Todo PreProc
       autocmd ColorScheme jellybeans hi! link pythonStrFormatting Constant
+      autocmd ColorScheme jellybeans hi! link pythonStrFormat Constant
+      autocmd ColorScheme jellybeans hi! link pythonStrInterpRegion Constant
+      autocmd ColorScheme jellybeans hi! link pythonStrTemplate Constant
       autocmd ColorScheme jellybeans hi! link pythonClassVar PreCondit
       autocmd ColorScheme jellybeans hi ALEErrorSign ctermfg=1 ctermbg='NONE'
       autocmd ColorScheme jellybeans hi ALEWarningSign ctermfg=3 ctermbg='NONE'
