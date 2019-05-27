@@ -108,7 +108,7 @@ osascript -e 'tell application "Mail" to activate'
 ###############################################################################
 
 # Add Jellybeans theme to the Terminal
-open Jellybeans.terminal
+open "${DIR}/Jellybeans.terminal"
 
 # Set Jellybeans theme as default
 osascript -e 'tell application "Terminal"' -e 'activate' -e 'set default settings to settings set "Jellybeans"' -e 'set startup settings to settings set "Jellybeans"' -e 'end tell'
@@ -119,6 +119,6 @@ osascript -e 'tell application "Terminal"' -e 'activate' -e 'set default setting
 
 # Open macOS settings document
 substep_info "Opening manual settings docs, please follow the instructions reported there..."
-open "MacOS setup.md"
+open "${DIR}/MacOS setup.md"
 
 substep_success "Done with macos."
