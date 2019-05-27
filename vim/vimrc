@@ -129,6 +129,9 @@ set textwidth=0         " disable automatic line wrap
 set viminfo='100,<50,:100,s10,h " things to remember (see :he viminfo)
 set formatoptions+=j    " remove comment chars when joining two comment lines
 
+" Set Netrw ignore list
+let g:netrw_list_hide = netrw_gitignore#Hide()
+
 " Set status bar options
 set laststatus=2        " show the status line always
 
