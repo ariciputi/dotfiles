@@ -9,6 +9,6 @@ function _prompt_command_duration
 
 
     if test -n "$command_duration"
-        echo -n -s '[' (set_color brblack) "$command_duration" (set_color normal) '] '
+        echo -n -s (set_color normal) '[' (set_color black) "$command_duration" (set_color normal) '] '
     end
 end
