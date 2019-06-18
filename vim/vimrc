@@ -71,12 +71,12 @@ call plug#end()            " required
 
 augroup ColorSchemeCustomization
       au!
-      autocmd ColorScheme jellybeans hi CursorLine cterm=underline ctermbg='NONE'
+      autocmd ColorScheme jellybeans hi CursorLine ctermbg=236
       autocmd ColorScheme jellybeans hi Folded ctermfg=241 ctermbg='NONE'
       autocmd ColorScheme jellybeans hi clear Search
       autocmd ColorScheme jellybeans hi clear IncSearch
-      autocmd ColorScheme jellybeans hi Search term=reverse cterm=reverse gui=reverse
-      autocmd ColorScheme jellybeans hi IncSearch term=reverse cterm=reverse gui=reverse
+      autocmd ColorScheme jellybeans hi Search ctermfg=40
+      autocmd ColorScheme jellybeans hi IncSearch ctermfg=40
       autocmd ColorScheme jellybeans hi clear ColorColumn
       autocmd ColorScheme jellybeans hi clear VertSplit
       autocmd ColorScheme jellybeans hi VertSplit ctermfg=243 ctermbg='NONE'
