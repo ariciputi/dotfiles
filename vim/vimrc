@@ -75,8 +75,8 @@ augroup ColorSchemeCustomization
       autocmd ColorScheme jellybeans hi Folded ctermfg=241 ctermbg='NONE'
       autocmd ColorScheme jellybeans hi clear Search
       autocmd ColorScheme jellybeans hi clear IncSearch
-      autocmd ColorScheme jellybeans hi Search ctermfg=40
-      autocmd ColorScheme jellybeans hi IncSearch ctermfg=40
+      autocmd ColorScheme jellybeans hi Search ctermfg=196
+      autocmd ColorScheme jellybeans hi IncSearch ctermfg=196
       autocmd ColorScheme jellybeans hi clear ColorColumn
       autocmd ColorScheme jellybeans hi clear VertSplit
       autocmd ColorScheme jellybeans hi VertSplit ctermfg=243 ctermbg='NONE'
