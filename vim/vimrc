@@ -38,6 +38,7 @@ Plug 'nanotech/jellybeans.vim'                      " Colorscheme (at last!)
 " https://github.com/sheerun/vim-polyglot
 " --------------------------
 
+Plug 'hashivim/vim-terraform'                       " Terraform plugin
 Plug 'chrisbra/csv.vim'                             " CSV plugin
 Plug 'dag/vim-fish'                                 " Support for fish-shell scripts
 Plug 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
