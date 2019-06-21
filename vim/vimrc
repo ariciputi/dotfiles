@@ -77,6 +77,8 @@ augroup ColorSchemeCustomization
       autocmd ColorScheme jellybeans hi clear IncSearch
       autocmd ColorScheme jellybeans hi Search ctermfg=196
       autocmd ColorScheme jellybeans hi IncSearch ctermfg=196
+      autocmd ColorScheme jellybeans hi clear MatchParen
+      autocmd ColorScheme jellybeans hi MatchParen ctermbg=0 ctermfg=196 cterm=underline
       autocmd ColorScheme jellybeans hi clear ColorColumn
       autocmd ColorScheme jellybeans hi clear VertSplit
       autocmd ColorScheme jellybeans hi VertSplit ctermfg=243 ctermbg='NONE'
@@ -437,7 +439,6 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " Rainbow settings
 let g:rainbow_active = 1
-hi MatchParen ctermbg=0
 
 " Python Enhanced Syntax Highlighting
 let g:python_version_2 = 0
