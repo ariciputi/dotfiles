@@ -32,3 +32,6 @@ set -x PATH $HOME/.local/bin $PATH
 
 # Set EDITOR
 set -x EDITOR 'vim'
+
+# Force locale
+set -gx LC_ALL "en_US.UTF-8"
