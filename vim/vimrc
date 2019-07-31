@@ -451,7 +451,7 @@ let g:ale_linters_explicit = 1                       " Only run linters explicit
 let g:ale_linters = { 'python': ['pylint'], 'sh': ['shellcheck'] }         " Enabled linters
 let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
 let g:ale_lint_on_save = 1                           " Run linters on file save
-let g:ale_open_list = 'on_save'                      " Open loclist on save only
+let g:ale_open_list = 0                              " Open loclist on save only
 
 let g:ale_fixers = {'python': ['black']}             " Enabled fixers
 let g:ale_fix_on_save = 1                            " Run fixers on file save
