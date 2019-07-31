@@ -20,7 +20,6 @@ Plug 'junegunn/vim-plug'                            " Required to have plug's do
 
 Plug 'ervandew/supertab'                            " SuperTab
 Plug 'henrik/vim-indexed-search'                    " Display #/N matches when searching
-Plug 'jlanzarotta/bufexplorer'                      " BufferExplorer
 Plug 'plytophogy/vim-diffchanges'                   " Shows changes since the last save
 Plug 'luochen1990/rainbow'                          " Rainbow parenthesis
 Plug 'scrooloose/nerdcommenter'                     " Make comment/uncomment easy
@@ -61,6 +60,8 @@ Plug 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
 Plug 'w0rp/ale'                                     " Syntax checking and linting
 Plug 'tpope/vim-dispatch'                           " Async task for vim
 Plug 'janko-m/vim-test'                             " Run tests from inside vim
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -385,8 +386,9 @@ cnoreabbrev Qall qall
 " Plugin settings
 "
 
-" BufExplorer settings
-let g:bufExplorerShowRelativePath=1  " Show relative paths.
+" fzf settings
+nnoremap <leader>be :Buffers<CR>
+nnoremap <leader>fe :Files<CR>
 
 " Grepper settings
 runtime plugin/grepper.vim    " initialize g:grepper with default values
