@@ -453,7 +453,7 @@ let g:ale_lint_on_text_changed = 'never'             " Never run linters automat
 let g:ale_lint_on_save = 1                           " Run linters on file save
 let g:ale_open_list = 0                              " Open loclist on save only
 
-let g:ale_fixers = {'python': ['black']}             " Enabled fixers
+let g:ale_fixers = {'python': ['black', 'isort']}    " Enabled fixers
 let g:ale_fix_on_save = 1                            " Run fixers on file save
 let g:ale_set_highlights = 0                         " Disable highlighting (signs are enough)
 
