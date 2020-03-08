@@ -331,14 +331,6 @@
                         },
                         {
                             "from": {
-                                "key_code": "left_arrow"
-                            },
-                            "to": {
-                                "key_code": "right_control"
-                            }
-                        },
-                        {
-                            "from": {
                                 "key_code": "non_us_backslash"
                             },
                             "to": {
@@ -351,14 +343,6 @@
                             },
                             "to": {
                                 "key_code": "backslash"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "right_arrow"
-                            },
-                            "to": {
-                                "key_code": "fn"
                             }
                         }
                     ]
