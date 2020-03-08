@@ -8,7 +8,7 @@ Host wamba
   User andrea
 
 Host raspberry
-  Hostname 172.16.128.32
+  Hostname 172.16.128.220
   User pi
 
 Host bb
