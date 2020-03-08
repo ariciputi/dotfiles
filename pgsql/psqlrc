@@ -10,7 +10,18 @@
 
 \timing
 
-\set PROMPT1 '%[%033[33;1m%]%x%[%033[0m%]%[%033[0;34m%]%n %m %[%033[0;32m%]%/%[%033[0m%]%R%# '
+-- Prompt expansion:
+-- %x = Transaction status
+-- %n = The database session user name
+-- %M = The full host name
+-- %> = The port number
+-- %/ = The name of the current database
+-- %R = Prompt status
+-- %# = # if db super-user, > otherwise
+\set PROMPT1 '%x%n at %M:%> in %/ %R%# '
+
+-- Temporarly disabled colors because of strange readline behaviour.
+-- \set PROMPT1 '%001%[%033[33;1m%]%002%x%001%[%033[0m%]%002%001%[%033[0;34m%]%002%n %m %001%[%033[0;32m%]%002%/%001%[%033[0m%]%002%R%# '
 
 -- keep a longer history
 \set HISTSIZE 9999
