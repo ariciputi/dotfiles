@@ -323,6 +323,7 @@ nnoremap <silent> <Leader>wj <C-w>j
 nnoremap <silent> <Leader>wk <C-w>k
 nnoremap <silent> <Leader>wl <C-w>l
 nnoremap <silent> <Leader>ww <C-w>w
+nnoremap <silent> <Leader>wq <C-w>q
 
 nnoremap <silent> <Leader>w= <C-w>=
 nnoremap <silent> <Leader>w_ <C-w>_
@@ -383,10 +384,33 @@ cnoreabbrev Qa qall
 cnoreabbrev Qall qall
 
 "
+" Language specific abbreviations
+"
+augroup FileTypeAbbreviations
+    autocmd!
+    autocmd FileType python inoreabbrev <buffer> pdb breakpoint()
+augroup END
+
+"
 " Plugin settings
 "
 
 " fzf settings
+let g:fzf_layout = { 'up': '~40%' }  " open the fzf pane in the upper part of the screen
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 nnoremap <leader>be :Buffers<CR>
 nnoremap <leader>fe :Files<CR>
 
