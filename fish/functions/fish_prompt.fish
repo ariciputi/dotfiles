@@ -47,11 +47,7 @@ function fish_prompt --description 'Write out the prompt'
 
     if test $VIRTUAL_ENV
         set_color yellow
-        if test $PIPENV_ACTIVE
-            printf " (%s)" (basename (cat "$VIRTUAL_ENV/.project"))
-        else
-            printf " (%s)" (basename $VIRTUAL_ENV)
-        end
+        printf " (%s)" (basename $VIRTUAL_ENV)
         set_color normal
     end
 
