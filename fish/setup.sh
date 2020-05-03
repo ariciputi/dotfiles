@@ -24,6 +24,14 @@ EOF
 
 fi
 
+substep_info "Install helper binaries."
+
+mkdir -p "${HOME}/.local/bin"
+
+find bin/ -type f -perm -u=x | while read bin_script; do
+     cp -v "${bin_script}" "${HOME}/.local/bin/"
+done
+
 substep_info "Set fish as your default shell"
 sudo chsh -s /usr/local/bin/fish $(whoami)
 
