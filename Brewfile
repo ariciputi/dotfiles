@@ -1,29 +1,47 @@
+tap "dbcli/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "homebrew/services"
-brew "python"
+brew "bat"
+brew "ctags"
+brew "docker-completion"
+brew "dos2unix"
+brew "fish"
+brew "fzf"
+brew "git"
+brew "htop"
 brew "ipython"
+brew "jq"
+brew "lftp"
 brew "mas"
+brew "pgformatter"
+brew "pyenv"
+brew "pyenv-virtualenv"
+brew "ripgrep"
+brew "rsync"
+brew "shellcheck"
+brew "sshfs"
+brew "telnet"
 brew "tmux"
-cask "1password-cli"
+brew "tokei"
+brew "tree"
+brew "vim"
+brew "watch"
+brew "dbcli/tap/litecli"
 cask "appcleaner"
 cask "dash"
 cask "docker"
 cask "firefox"
 cask "google-chrome"
 cask "karabiner-elements"
+cask "send-to-kindle"
+cask "virtualbox"
 cask "visual-studio-code"
-mas "1Password", id: 443987910
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
+mas "Bitwarden", id: 1352778147
 mas "Mactracker", id: 430255202
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
+mas "Monodraw", id: 920404675
 mas "Slack", id: 803453959
 mas "Telegram", id: 747648890
-mas "TextWrangler", id: 404010395
 mas "The Unarchiver", id: 425424353
-mas "Things3", id: 904280696
 mas "Tweetbot", id: 557168941
