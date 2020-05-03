@@ -35,3 +35,11 @@ set -x EDITOR 'vim'
 
 # Force locale
 set -gx  LC_ALL en_US.UTF-8
+
+# Initialize pyenv (if installed)
+if command -v pyenv > /dev/null 2>&1
+    set -x PYENV_ROOT $HOME/.pyenv
+    set -x PATH $PYENV_ROOT/bin $PATH
+    status --is-interactive; and source (pyenv init - | psub)
+    status --is-interactive; and source (pyenv virtualenv-init - | psub)
+end
