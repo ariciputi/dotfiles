@@ -36,6 +36,9 @@ set -x EDITOR 'vim'
 # Force locale
 set -gx  LC_ALL en_US.UTF-8
 
+# Set Rustup path
+set PATH $HOME/.cargo/bin $PATH
+
 # Initialize pyenv (if installed)
 if command -v pyenv > /dev/null 2>&1
     set -x PYENV_ROOT $HOME/.pyenv
