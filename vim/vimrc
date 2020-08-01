@@ -44,6 +44,7 @@ Plug 'dag/vim-fish'                                 " Support for fish-shell scr
 Plug 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
 Plug 'lifepillar/pgsql.vim'                         " PostgreSQL syntax and indent
 Plug 'tmhedberg/SimpylFold'                         " Better folding for Python
+Plug 'rust-lang/rust.vim'                           " Rust support in vim
 
 "Plug 'vim-python/python-syntax'                     " Better Python syntax highlighting
 Plug '~/Documents/Development/python-syntax'        " Better Python syntax highlighting
@@ -478,7 +479,7 @@ let g:ale_lint_on_text_changed = 'never'             " Never run linters automat
 let g:ale_lint_on_save = 1                           " Run linters on file save
 let g:ale_open_list = 0                              " Open loclist on save only
 
-let g:ale_fixers = {'python': ['black', 'isort'], 'sql': ['pgformatter']}    " Enabled fixers
+let g:ale_fixers = {'python': ['black', 'isort'], 'sql': ['pgformatter'], 'rust': ['rustfmt']}    " Enabled fixers
 let g:ale_fix_on_save = 1                            " Run fixers on file save
 let g:ale_set_highlights = 0                         " Disable highlighting (signs are enough)
 
