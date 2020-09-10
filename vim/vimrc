@@ -249,6 +249,7 @@ if has("autocmd")
         autocmd FileType rst setlocal tw=70 sw=2 sts=2 et fo+=t
         autocmd FileType tcl setlocal tw=80 sw=4 sts=4 et fo-=t
         autocmd FileType markdown setlocal tw=80 sw=2 sts=2 et fo+=t
+        autocmd FileType terraform setlocal tw=80 sw=2 sts=2 et isk+=-
     augroup END
 
     augroup OnQuit
@@ -474,12 +475,21 @@ let g:python_highlight_all = 1
 
 " ALE settings
 let g:ale_linters_explicit = 1                       " Only run linters explicitly enabled
-let g:ale_linters = { 'python': ['pylint'], 'sh': ['shellcheck'] }         " Enabled linters
+let g:ale_linters = {
+            \ 'python': ['pylint'],
+            \ 'sh': ['shellcheck'],
+            \ 'terraform': ['tflint'],
+            \ }                                      " Enabled linters
 let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
 let g:ale_lint_on_save = 1                           " Run linters on file save
 let g:ale_open_list = 0                              " Open loclist on save only
 
-let g:ale_fixers = {'python': ['black', 'isort'], 'sql': ['pgformatter'], 'rust': ['rustfmt']}    " Enabled fixers
+let g:ale_fixers = {
+            \ 'python': ['black', 'isort'],
+            \ 'sql': ['pgformatter'],
+            \ 'terraform': ['terraform'],
+            \ 'rust': ['rustfmt'],
+            \ }    " Enabled fixers
 let g:ale_fix_on_save = 1                            " Run fixers on file save
 let g:ale_set_highlights = 0                         " Disable highlighting (signs are enough)
 
