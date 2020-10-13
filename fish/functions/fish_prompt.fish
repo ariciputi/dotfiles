@@ -2,8 +2,8 @@ function fish_prompt --description 'Write out the prompt'
 
     # Choose prompt color according to last command status
     test $status -ne 0;
-        and set -l status_colors 600 900 c00 # shades of red
-        or set -l status_colors 333 666 aaa # shades of gray
+        and set -l status_colors 95493c b5503a e8593a # shades of red
+        or set -l status_colors 5a5a5a 7a7a7a c1c1c1 # shades of gray
 
     if not set -q VIRTUAL_ENV_DISABLE_PROMPT
         set -g VIRTUAL_ENV_DISABLE_PROMPT true
@@ -26,17 +26,17 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     # Prompt's first line
-    set_color 34D2B2 # green-ish
+    set_color 95E6C2 # green-ish
     printf '%s' $USER
     set_color normal
     printf ' at '
 
-    set_color 3DC1FF # pale blue
+    set_color 82B3DF # pale blue
     printf '%s' (prompt_hostname)
     set_color normal
     printf ' in '
 
-    set_color DC8FFF # pale purple
+    set_color E1A2F6 # pale purple
     printf '%s' (prompt_pwd)
     set_color normal
 

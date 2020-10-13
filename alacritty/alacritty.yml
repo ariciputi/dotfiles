@@ -12,81 +12,6 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-schemes:
-  base16: &base16
-    # Default colors
-    primary:
-      background: '#181818'
-      foreground: '#d8d8d8'
-
-    # Colors the cursor will use if `custom_cursor_colors` is true
-    cursor:
-      text: '#d8d8d8'
-      cursor: '#d8d8d8'
-
-    # Normal colors
-    normal:
-      black:   '#181818'
-      red:     '#ab4642'
-      green:   '#a1b56c'
-      yellow:  '#f7ca88'
-      blue:    '#7cafc2'
-      magenta: '#ba8baf'
-      cyan:    '#86c1b9'
-      white:   '#d8d8d8'
-
-    # Bright colors
-    bright:
-      black:   '#585858'
-      red:     '#ab4642'
-      green:   '#a1b56c'
-      yellow:  '#f7ca88'
-      blue:    '#7cafc2'
-      magenta: '#ba8baf'
-      cyan:    '#86c1b9'
-      white:   '#f8f8f8'
-
-  jellybeans: &jellybeans
-    # Default colors
-    primary:
-      background: '#161616'
-      foreground: '#e4e4e4'
-
-    # Cursor volors
-    cursor:
-      text: '#feffff'
-      cursor: '#ffb472'
-
-    # Normal colors
-    normal:
-      black:   '#a3a3a3'
-      red:     '#e98885'
-      green:   '#a3c38b'
-      yellow:  '#ffc68d'
-      blue:    '#a6cae2'
-      magenta: '#e7cdfb'
-      cyan:    '#00a69f'
-      white:   '#e4e4e4'
-
-    # Bright colors
-    bright:
-      black:   '#c8c8c8'
-      red:     '#ffb2b0'
-      green:   '#c8e2b9'
-      yellow:  '#ffe1af'
-      blue:    '#bddff7'
-      magenta: '#fce2ff'
-      cyan:    '#0bbdb6'
-      white:   '#feffff'
-
-    # Selection colors
-    selection:
-      text: '#5963a2'
-      background: '#f6f6f6'
-
-colors: *base16
-#colors: *jellybeans
-
 window:
   # Window dimensions (changes require restart)
   #
@@ -244,13 +169,16 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 # Colors (Tomorrow Night)
-#colors:
+colors:
   # Default colors
-  #primary:
+  primary:
   #  background: '#1d1f21'
   #  foreground: '#c5c8c6'
+    background: '#181818'
+    foreground: '#d8d8d8'
 
     # Bright and dim foreground colors
     #
@@ -259,6 +187,7 @@ font:
     # is `false`, the normal foreground color will be used.
     #dim_foreground: '#828482'
     #bright_foreground: '#eaeaea'
+    bright_foreground: '#939df8'
 
   # Cursor colors
   #
@@ -269,6 +198,10 @@ font:
   #cursor:
   #  text: CellBackground
   #  cursor: CellForeground
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '#d8d8d8'
+    cursor: '#d8d8d8'
 
   # Vi mode cursor colors
   #
@@ -305,26 +238,26 @@ font:
     #  foreground: '#1d1f21'
 
   # Normal colors
-  #normal:
-  #  black:   '#1d1f21'
-  #  red:     '#cc6666'
-  #  green:   '#b5bd68'
-  #  yellow:  '#f0c674'
-  #  blue:    '#81a2be'
-  #  magenta: '#b294bb'
-  #  cyan:    '#8abeb7'
-  #  white:   '#c5c8c6'
+  normal:
+    black:   '#181818'
+    red:     '#efa5a3'
+    green:   '#b5d88e'
+    yellow:  '#f7ca88'
+    blue:    '#7cafc2'
+    magenta: '#ba8baf'
+    cyan:    '#8ad6e5'
+    white:   '#d8d8d8'
 
   # Bright colors
-  #bright:
-  #  black:   '#666666'
-  #  red:     '#d54e53'
-  #  green:   '#b9ca4a'
-  #  yellow:  '#e7c547'
-  #  blue:    '#7aa6da'
-  #  magenta: '#c397d8'
-  #  cyan:    '#70c0b1'
-  #  white:   '#eaeaea'
+  bright:
+    black:   '#585858'
+    red:     '#ab4642'
+    green:   '#a1b56c'
+    yellow:  '#f7ca88'
+    blue:    '#7cafc2'
+    magenta: '#ba8baf'
+    cyan:    '#86c1b9'
+    white:   '#f8f8f8'
 
   # Dim colors
   #

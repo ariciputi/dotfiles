@@ -11,7 +11,7 @@ function fish_right_prompt
         set -l _date (date "+%a %d %b")
         set -l _time (date "+%T")
 
-        set_color brblack
+        set_color 8a8a8a
         echo -n -s $_date ' ' $_time
         set_color normal
 end
