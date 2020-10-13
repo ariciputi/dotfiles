@@ -22,10 +22,12 @@ bind --user \en history-search-forward
 bind --user \eP history-token-search-backward
 bind --user \eN history-token-search-forward
 
+# Set fish colors
+set_fish_colors
+
 # Alias
 alias llh="ls -ld .*" # list only dot files (long form)
 alias lv="/usr/share/vim/vim80/macros/less.sh"
-alias ..="cd .."
 
 # Set PATH
 set -x PATH $HOME/.local/bin $PATH
