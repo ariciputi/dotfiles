@@ -45,6 +45,8 @@ Plug 'pangloss/vim-javascript'                      " Better Javascript syntax a
 Plug 'lifepillar/pgsql.vim'                         " PostgreSQL syntax and indent
 Plug 'tmhedberg/SimpylFold'                         " Better folding for Python
 Plug 'rust-lang/rust.vim'                           " Rust support in vim
+Plug 'earthly/earthly.vim', { 'branch': 'main' }    " Earthly syntax highlight
+Plug 'pedrohdz/vim-yaml-folds'                      " YAML folding
 
 "Plug 'vim-python/python-syntax'                     " Better Python syntax highlighting
 Plug '~/Documents/Development/python-syntax'        " Better Python syntax highlighting
@@ -479,6 +481,7 @@ let g:ale_linters = {
             \ 'python': ['pylint'],
             \ 'sh': ['shellcheck'],
             \ 'terraform': ['tflint'],
+            \ 'rust': ['rls'],
             \ }                                      " Enabled linters
 let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
 let g:ale_lint_on_save = 1                           " Run linters on file save
