@@ -20,7 +20,6 @@ Plug 'junegunn/vim-plug'                            " Required to have plug's do
 
 Plug 'ervandew/supertab'                            " SuperTab
 Plug 'henrik/vim-indexed-search'                    " Display #/N matches when searching
-Plug 'plytophogy/vim-diffchanges'                   " Shows changes since the last save
 Plug 'luochen1990/rainbow'                          " Rainbow parenthesis
 Plug 'scrooloose/nerdcommenter'                     " Make comment/uncomment easy
 Plug 'tpope/vim-capslock'                           " Capslock without capslock key
@@ -528,11 +527,6 @@ nmap <silent> <leader>tv :TestVisit<CR>
 " Session settings
 set sessionoptions=buffers,curdir,folds
 let g:session_autoload='no'
-
-" DiffChanges settings
-nnoremap <silent> <Leader>df :DiffChanges<CR>
-nnoremap <silent> <Leader>dt :DiffChangesDiffToggle<CR>
-nnoremap <silent> <Leader>dp :DiffChangesPatchToggle<CR>
 
 " Fugitive settings
 nnoremap <silent> <Leader>fs :Gstatus<CR>
