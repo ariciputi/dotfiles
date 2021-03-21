@@ -543,6 +543,7 @@ set statusline+=\ %m                                   " modified flag
 set statusline+=\ %h                                   " help buffer flag
 set statusline+=%r                                     " read-only buffer flag
 set statusline+=\ %{FugitiveStatusline()}              " show git information
+set statusline+=%{exists('*CapsLockStatusline')?CapsLockStatusline():''}
 set statusline+=%=                                     " separation point between left and right
 set statusline+=\[%b,\0\x%B\]                          " char-code under cursor (decimal, hex)
 set statusline+=\ \[%{&ff}\]                           " file-format
