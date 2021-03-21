@@ -44,6 +44,7 @@ Plug 'pangloss/vim-javascript'                      " Better Javascript syntax a
 Plug 'rust-lang/rust.vim'                           " Rust support in vim
 Plug 'earthly/earthly.vim', { 'branch': 'main' }    " Earthly syntax highlight
 Plug 'pedrohdz/vim-yaml-folds'                      " YAML folding
+Plug 'elixir-editors/vim-elixir'                    " Elixir plugin
 
 " --------------------------
 " Python specific plugins
