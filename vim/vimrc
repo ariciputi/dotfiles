@@ -41,7 +41,6 @@ Plug 'hashivim/vim-terraform'                       " Terraform plugin
 Plug 'chrisbra/csv.vim', {'on' : [] }               " CSV plugin (disabled by default)
 Plug 'dag/vim-fish'                                 " Support for fish-shell scripts
 Plug 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
-Plug 'lifepillar/pgsql.vim'                         " PostgreSQL syntax and indent
 Plug 'tmhedberg/SimpylFold'                         " Better folding for Python
 Plug 'rust-lang/rust.vim'                           " Rust support in vim
 Plug 'earthly/earthly.vim', { 'branch': 'main' }    " Earthly syntax highlight
