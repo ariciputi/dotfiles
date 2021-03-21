@@ -482,6 +482,7 @@ let g:ale_linters = {
             \ }                                      " Enabled linters
 let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
 let g:ale_lint_on_save = 1                           " Run linters on file save
+let g:ale_lint_on_insert_leave = 0                   " Don't run linters when leaving insert mode
 let g:ale_open_list = 0                              " Open loclist on save only
 
 let g:ale_fixers = {
