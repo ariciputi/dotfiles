@@ -531,6 +531,8 @@ let g:session_autoload='no'
 " Fugitive settings
 nnoremap <silent> <Leader>fs :Gstatus<CR>
 
+" Dash settings
+nmap <silent> <leader>da <Plug>DashSearch
 
 "
 " Set the status line
