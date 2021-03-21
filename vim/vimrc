@@ -533,6 +533,10 @@ nnoremap <silent> <Leader>df :DiffChanges<CR>
 nnoremap <silent> <Leader>dt :DiffChangesDiffToggle<CR>
 nnoremap <silent> <Leader>dp :DiffChangesPatchToggle<CR>
 
+" Fugitive settings
+nnoremap <silent> <Leader>fs :Gstatus<CR>
+
+
 "
 " Set the status line
 "
