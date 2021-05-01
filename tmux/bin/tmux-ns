@@ -7,13 +7,13 @@ message=
 
 if ! tmux ls -F "#S" | grep -q "$session_name"; then
     # Start the session and give it the passed in name; also give the first window a name
-    tmux new-session -s "$session_name" -n "konsole" -d
+    tmux new-session -c "$HOME" -s "$session_name" -n "konsole" -d
 
     # Create the standard windows I'm used to
-    tmux new-window -d -n "vim"
-    tmux new-window -d -n "workdir"
-    tmux new-window -d -n "ipython"
-    tmux new-window -d -n "sql"
+    tmux new-window -d -c "$HOME" -t $session_name: -n "vim"
+    tmux new-window -d -c "$HOME" -t $session_name: -n "workdir"
+    tmux new-window -d -c "$HOME" -t $session_name: -n "ipython"
+    tmux new-window -d -c "$HOME" -t $session_name: -n "sql"
 
     # Select window #1 as the current windows
     tmux select-window -t "$session_name:0"
