@@ -16,12 +16,8 @@ if [ -f "${KARABINER_CONFIG}" ]; then
 fi
 ln "${BASE_DIR}/karabiner.json" "${KARABINER_CONFIG}"
 
-create_relative_links "${BASE_DIR}/assets/complex_modifications" "${HOME}/.config/karabiner/assets/complex_modifications"
-
 # Test if Karabiner is already installed and if so install Developer profile as system default
 KARABINER_CLI="/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli"
 if [ -x "${KARABINER_CLI}" ]; then
-    "${KARABINER_CLI}" --select-profile "Developer"
-    sudo "${KARABINER_CLI}" --copy-current-profile-to-system-default-profile
     ln -s "${KARABINER_CLI}" "${HOME}/.local/bin/"
 fi
