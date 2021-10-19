@@ -16,3 +16,8 @@ Host bb
   Hostname bitbucket.org
   User hg
 
+Host github
+    Hostname github.com
+    User ariciputi
+    IdentityFile ~/.ssh/github_key
+    IdentitiesOnly yes
