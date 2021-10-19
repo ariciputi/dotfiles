@@ -47,7 +47,7 @@ set PATH $HOME/.poetry/bin $PATH
 # Initialize pyenv (if installed)
 if command -v pyenv > /dev/null 2>&1
     set -x PYENV_ROOT $HOME/.pyenv
-    set -x PATH $PYENV_ROOT/bin $PATH
-    status --is-interactive; and source (pyenv init - | psub)
-    status --is-interactive; and source (pyenv virtualenv-init - | psub)
+    status is-login; and pyenv init --path | source
+    status is-interactive; and pyenv init - | source
+    status is-interactive; and pyenv virtualenv-init - | source
 end
