@@ -10,6 +10,14 @@ Host wamba
 Host raspberry
   Hostname 172.16.128.220
   User pi
+  IdentityFile ~/.ssh/id_rsa_new
+  IdentitiesOnly yes
+
+Host rp4
+  Hostname 192.168.84.4
+  User pi
+  IdentityFile ~/.ssh/id_rsa_new
+  IdentitiesOnly yes
 
 Host bb
   Compression yes
