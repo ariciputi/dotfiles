@@ -1,0 +1,56 @@
+#!/usr/bin/osascript
+
+on run argv
+
+    set argv_len to length of argv
+
+    -- Missing arguments, print usage and exit
+    if (argv_len is less than 2) then
+        return "USAGE: notify dialog_title dialog_message [default_button] [cancel_button] [timeout]"
+    end if
+
+    -- Set mandatory arguments
+    set dialog_title to (item 1 of argv)
+    set dialog_message to (item 2 of argv)
+
+    -- Set default values for optional arguments
+    set timeout_sec to 10
+    set cancel_button to "Cancel"
+    set default_button to "Ok"
+
+    -- Override arguments' default values if given
+    if (argv_len is equal to 5) then
+        set timeout_sec to (item 5 of argv)
+        set cancel_button to (item 4 of argv)
+        set default_button to (item 3 of argv)
+
+    else if (argv_len is equal to 4) then
+        set cancel_button to (item 4 of argv)
+        set default_button to (item 3 of argv)
+
+    else if (argv_len is equal to 3) then
+        set default_button to (item 3 of argv)
+
+    end if
+
+
+    -- Show the dialog
+    try
+        set user_reply to display alert dialog_title message dialog_message as informational buttons [default_button, cancel_button] default button default_button cancel button cancel_button giving up after timeout_sec
+    on error number errorNumber
+        if (errorNumber is equal to -128) then -- User cancelled
+            return "cancel"
+        end if
+
+    end try
+
+    -- Check if the default button has been clicked
+    if (button returned of user_reply is equal to default_button) then
+        return "default"
+    -- Check if the dialog timed out
+    else if (gave up of user_reply is true) then
+        return "timeout"
+    end if
+
+end run
+

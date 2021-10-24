@@ -1,0 +1,33 @@
+# Downloads are supposed to be temporary and not worth of backup
+/andrea/Downloads/
+
+# Ignore files already trashed
+/andrea/.Trash
+
+# Ignore ssh related stuff
+/andrea/.ssh
+
+# Ignore my own logs
+/andrea/.hammerspoon/rsync.log
+
+# Ignore VSCode extensions
+/andrea/.vscode
+
+# Ignore everything inside Library except iBooks
+/andrea/Library/*
+/andrea/Library/Containers/*
+/andrea/Library/Containers/com.apple.BKAgentService/*
+/andrea/Library/Containers/com.apple.BKAgentService/Data/*
+/andrea/Library/Containers/com.apple.BKAgentService/Data/Documents/*
+/andrea/Library/Containers/com.apple.BKAgentService/Data/Documents/iBooks/*
+
+# Ignore caches files
+Caches/
+Cache/
+
+# Ignore Python virtual environments
+.venv
+
+.DS_Store
+.Spotlight-V100
+.fseventsd

@@ -1,0 +1,14 @@
+# Include Keychains
+/andrea/Library/Keychains
+
+# Include iBooks content specifically
+/andrea/Library/Containers
+/andrea/Library/Containers/com.apple.BKAgentService
+/andrea/Library/Containers/com.apple.BKAgentService/Data
+/andrea/Library/Containers/com.apple.BKAgentService/Data/Documents
+/andrea/Library/Containers/com.apple.BKAgentService/Data/Documents/iBooks
+/andrea/Library/Containers/com.apple.BKAgentService/Data/Documents/iBooks/Books
+
+# Include Photos library (rsync seems not able to descend into it if not told explicitely)
+#/andrea/Pictures/Photos Library.photoslibrary
+#/andrea/Pictures/Photos Library.photoslibrary/***
