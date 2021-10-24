@@ -532,7 +532,7 @@ set sessionoptions=buffers,curdir,folds
 let g:session_autoload='no'
 
 " Fugitive settings
-nnoremap <silent> <Leader>fs :Gstatus<CR>
+nnoremap <silent> <Leader>fs :Git<CR>
 
 " Dash settings
 nmap <silent> <leader>da <Plug>DashSearch
