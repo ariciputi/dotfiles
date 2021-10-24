@@ -271,6 +271,15 @@ if has("autocmd")
         autocmd BufWritePre,FileWritePre * if !&bin && !&diff | %s/\s\+$//e | endif
     augroup END
 
+    " Dynamically disable smartcase when entering command mode, so that both
+    " 'verylon<TAB>' and 'verylo<TAB>' -> 'VeryLongco<TAB>' work as desired.
+    " It assumes that both ignorecase and smartcase are already set.
+    augroup dynamic_smartcase
+	autocmd!
+	autocmd CmdLineEnter : set nosmartcase
+	autocmd CmdLineLeave : set smartcase
+    augroup END
+
 endif " has("autocmd")
 
 "
