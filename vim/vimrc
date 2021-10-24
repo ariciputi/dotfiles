@@ -404,7 +404,7 @@ cnoreabbrev Qall qall
 "
 augroup FileTypeAbbreviations
     autocmd!
-    autocmd FileType python inoreabbrev <buffer> pdb breakpoint()
+    autocmd FileType python inoreabbrev <buffer> pdb breakpoint()pass
 augroup END
 
 "
