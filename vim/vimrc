@@ -42,7 +42,6 @@ Plug 'chrisbra/csv.vim', {'on' : [] }               " CSV plugin (disabled by de
 Plug 'dag/vim-fish'                                 " Support for fish-shell scripts
 Plug 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
 Plug 'rust-lang/rust.vim'                           " Rust support in vim
-Plug 'earthly/earthly.vim', { 'branch': 'main' }    " Earthly syntax highlight
 Plug 'pedrohdz/vim-yaml-folds'                      " YAML folding
 Plug 'elixir-editors/vim-elixir'                    " Elixir plugin
 
@@ -60,11 +59,10 @@ Plug 'jeetsukumaran/vim-pythonsense'                " Better Python motion
 
 Plug 'tpope/vim-fugitive'                           " Git integration
 Plug 'mhinz/vim-grepper'                            " Grep-like tool integration
-Plug 'rizzatti/dash.vim'                            " Dash - Vim integration
 Plug 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
 Plug 'w0rp/ale'                                     " Syntax checking and linting
 Plug 'tpope/vim-dispatch'                           " Async task for vim
-Plug 'janko-m/vim-test'                             " Run tests from inside vim
+Plug 'vim-test/vim-test'                             " Run tests from inside vim
 Plug '/opt/homebrew/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
