@@ -22,6 +22,7 @@ Plug 'ervandew/supertab'                            " SuperTab
 Plug 'henrik/vim-indexed-search'                    " Display #/N matches when searching
 Plug 'luochen1990/rainbow'                          " Rainbow parenthesis
 Plug 'scrooloose/nerdcommenter'                     " Make comment/uncomment easy
+Plug 'tpope/vim-commentary'                         " Make comment/uncomment easy
 Plug 'tpope/vim-capslock'                           " Capslock without capslock key
 Plug 'tpope/vim-surround'                           " Make changing surround chars easier
 Plug 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
