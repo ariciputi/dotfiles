@@ -50,8 +50,7 @@ Plug 'elixir-editors/vim-elixir'                    " Elixir plugin
 " Python specific plugins
 " --------------------------
 Plug 'tmhedberg/SimpylFold'                         " Better folding for Python
-"Plug 'vim-python/python-syntax'                     " Better Python syntax highlighting
-Plug '~/Documents/Development/python-syntax'        " Better Python syntax highlighting
+Plug 'vim-python/python-syntax'                     " Better Python syntax highlighting
 Plug 'vim-scripts/indentpython.vim'                 " Better Python indentation
 Plug 'jeetsukumaran/vim-pythonsense'                " Better Python motion
 
