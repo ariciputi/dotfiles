@@ -45,8 +45,9 @@ set PATH $HOME/.cargo/bin $PATH
 set PATH $HOME/.poetry/bin $PATH
 
 # Initialize pyenv (if installed)
-if command -v pyenv > /dev/null 2>&1
-    set -x PYENV_ROOT $HOME/.pyenv
+if test -x $HOME/.pyenv/bin/pyenv
+    set -gx PYENV_ROOT $HOME/.pyenv
+    set -g fish_user_paths $PYENV_ROOT/bin $fish_user_paths
     status is-login; and pyenv init --path | source
     status is-interactive; and pyenv init - | source
     status is-interactive; and pyenv virtualenv-init - | source
