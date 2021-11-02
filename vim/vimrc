@@ -427,6 +427,7 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 nnoremap <leader>be :Buffers<CR>
 nnoremap <leader>fe :Files<CR>
+nnoremap <leader>FE :GFiles<CR>
 
 " Grepper settings
 runtime plugin/grepper.vim    " initialize g:grepper with default values
