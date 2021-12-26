@@ -19,13 +19,8 @@ Host rp4
   IdentityFile ~/.ssh/id_rsa_new
   IdentitiesOnly yes
 
-Host bb
-  Compression yes
-  Hostname bitbucket.org
-  User hg
-
 Host github
     Hostname github.com
     User ariciputi
-    IdentityFile ~/.ssh/github_key
+    IdentityFile ~/.ssh/id_ed25519
     IdentitiesOnly yes
