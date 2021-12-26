@@ -19,7 +19,7 @@ if [ $(command -v fish) ] && [ ! $(grep -q -e "fish" /etc/shells) ]; then
     sudo sh -c 'cat >> /etc/shells' <<-EOF
 
 # Fish shell
-/usr/local/bin/fish
+/opt/homebrew/bin/fish
 EOF
 
 fi
@@ -33,6 +33,6 @@ find bin/ -type f -perm -u=x | while read bin_script; do
 done
 
 substep_info "Set fish as your default shell"
-sudo chsh -s /usr/local/bin/fish $(whoami)
+sudo chsh -s /opt/homebrew/bin/fish $(whoami)
 
 substep_success "Done with fish."
