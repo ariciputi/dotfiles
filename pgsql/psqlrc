@@ -18,10 +18,19 @@
 -- %/ = The name of the current database
 -- %R = Prompt status
 -- %# = # if db super-user, > otherwise
-\set PROMPT1 '%x%n at %M:%> in %/ %R%# '
+-- Prompt with no-color setup
+-- \set PROMPT1 '%x%n on %M:%> at %/ %R%# '
+-- Color escape sequence
+-- <sequence beginning marker><SGR sequence><sequence ending marker>
+-- where <sequence beginning/ending marker> are a psql specific sequence
+-- (apparently something supported by readline but not documented, ref. <https://stackoverflow.com/questions/19139330/colors-in-the-psql-prompt>), and:
+-- <sequence beginning marker> = %001
+-- <sequence ending marker> = %002
+-- the <SGR sequence> is defined as:
+-- %[%033[<foreground code>;5;<color code>m%] (e.g. %[%033[38;5;226m%])
+-- ref. <https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit>
 
--- Temporarly disabled colors because of strange readline behaviour.
--- \set PROMPT1 '%001%[%033[33;1m%]%002%x%001%[%033[0m%]%002%001%[%033[0;34m%]%002%n %m %001%[%033[0;32m%]%002%/%001%[%033[0m%]%002%R%# '
+\set PROMPT1 '%001%[%033[38;5;226m%]%002%x%001%[%033[38;5;80m%]%002%n %001%[%033[38;5;15m%]%002on %001%[%033[38;5;45m%]%002%M:%> %001%[%033[38;5;15m%]%002at %001%[%033[38;5;183m%]%002%/ %001%[%033[38;5;15m%]%002%R%# '
 
 -- keep a longer history
 \set HISTSIZE 9999
