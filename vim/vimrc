@@ -542,9 +542,6 @@ let g:session_autoload='no'
 " Fugitive settings
 nnoremap <silent> <Leader>fs :Git<CR>
 
-" Dash settings
-nmap <silent> <leader>da <Plug>DashSearch
-
 "
 " Set the status line
 "
