@@ -315,7 +315,7 @@ inoremap <C-u> <C-g>u<C-u>
 inoremap <C-w> <C-g>u<C-w>
 
 " Toggle relative line numbers
-nnoremap <silent> <Leader>rr :set relativenumber! relativenumber?<CR>
+nnoremap <silent> <Leader>rr :set relativenumber! number!<CR>
 
 " Re-select the text block just pasted
 nnoremap <Leader>vv V`]
