@@ -62,8 +62,8 @@ Plug 'tpope/vim-fugitive'                           " Git integration
 Plug 'mhinz/vim-grepper'                            " Grep-like tool integration
 Plug 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
 Plug 'w0rp/ale'                                     " Syntax checking and linting
-Plug 'tpope/vim-dispatch'                           " Async task for vim
-Plug 'vim-test/vim-test'                             " Run tests from inside vim
+Plug 'jgdavey/tslime.vim'                           " Send test to a specific tmux-pane
+Plug 'vim-test/vim-test'                            " Run tests from inside vim
 Plug '/opt/homebrew/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
@@ -529,11 +529,19 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_exclude_filetypes = ['help', 'terminal']
 
 " Vim-test settings
-let test#strategy = 'dispatch'
+let g:tslime_always_current_session = 1
+let test#strategy = 'tslime'
+
+let g:test#python#pytest#options = {
+            \ 'all': '-vv',
+            \ 'nearest': '--no-cov',
+            \ }
+
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tv :TestVisit<CR>
+nmap <silent> <leader>ta :TestSuite<CR>
 
 " Session settings
 set sessionoptions=buffers,curdir,folds
