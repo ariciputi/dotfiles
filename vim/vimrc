@@ -528,8 +528,14 @@ let g:indent_guides_enable_on_vim_startup = 0
 let g:indent_guides_guide_size = 1
 let g:indent_guides_exclude_filetypes = ['help', 'terminal']
 
-" Vim-test settings
+" Tslime settings
 let g:tslime_always_current_session = 1
+
+vmap <C-c><C-c> <Plug>SendSelectionToTmux
+nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+nmap <C-c>r <Plug>SetTmuxVars
+
+" Vim-test settings
 let test#strategy = 'tslime'
 
 let g:test#python#pytest#options = {
