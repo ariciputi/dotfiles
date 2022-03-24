@@ -568,6 +568,7 @@ let g:session_autoload='no'
 
 " Fugitive settings
 nnoremap <silent> <Leader>fs :Git<CR>
+nnoremap <silent> <Leader>fp :Git push<CR>
 
 "
 " Set the status line
