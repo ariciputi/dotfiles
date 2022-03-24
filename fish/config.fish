@@ -30,7 +30,7 @@ alias llh="ls -ld .*" # list only dot files (long form)
 alias lv="/usr/share/vim/vim80/macros/less.sh"
 
 # Set PATH
-set -x PATH $HOME/.local/bin $PATH
+fish_add_path $HOME/.local/bin
 
 # Set EDITOR
 set -x EDITOR 'vim'
@@ -39,15 +39,15 @@ set -x EDITOR 'vim'
 set -gx  LC_ALL en_US.UTF-8
 
 # Set Rustup path
-set PATH $HOME/.cargo/bin $PATH
+fish_add_path $HOME/.cargo/bin
 
 # Set poetry path
-set PATH $HOME/.poetry/bin $PATH
+fish_add_path $HOME/.poetry/bin
 
 # Initialize pyenv (if installed)
 if test -x $HOME/.pyenv/bin/pyenv
     set -gx PYENV_ROOT $HOME/.pyenv
-    set -g fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+    fish_add_path $PYENV_ROOT/bin
     status is-login; and pyenv init --path | source
     status is-interactive; and pyenv init - | source
     status is-interactive; and pyenv virtualenv-init - | source
