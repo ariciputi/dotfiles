@@ -323,7 +323,9 @@ nnoremap <silent> <Leader>rr :set relativenumber! number!<CR>
 nnoremap <Leader>vv V`]
 
 " Quickly open the ~/.vimrc file
-nnoremap <Leader>ev <C-w><C-v><C-l>:e $MYVIMRC<CR>
+nnoremap <Leader>ve <C-w><C-v><C-l>:e $MYVIMRC<CR>
+" Quickly re-load the ~/.vimrc file
+nnoremap <Leader>vs :source $MYVIMRC<CR>
 
 " Set paste/nopaste mapping
 nnoremap <C-p><C-p> :set invpaste paste?<CR>
