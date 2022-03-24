@@ -44,6 +44,13 @@ fish_add_path $HOME/.cargo/bin
 # Set poetry path
 fish_add_path $HOME/.poetry/bin
 
+# Set dotnet path
+if test -e $HOME/.dotnet
+    fish_add_path $HOME/.dotnet
+    set -gx DOTNET_ROOT ~/.dotnet
+    set -gx DOTNET_CLI_TELEMETRY_OPTOUT true
+end
+
 # Initialize pyenv (if installed)
 if test -x $HOME/.pyenv/bin/pyenv
     set -gx PYENV_ROOT $HOME/.pyenv
