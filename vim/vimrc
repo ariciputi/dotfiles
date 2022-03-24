@@ -80,8 +80,8 @@ augroup ColorSchemeCustomization
       autocmd ColorScheme jellybeans hi Folded ctermfg=241 ctermbg='NONE'
       autocmd ColorScheme jellybeans hi clear Search
       autocmd ColorScheme jellybeans hi clear IncSearch
-      autocmd ColorScheme jellybeans hi Search ctermfg=196
-      autocmd ColorScheme jellybeans hi IncSearch ctermfg=196
+      autocmd ColorScheme jellybeans hi Search cterm=underline
+      autocmd ColorScheme jellybeans hi IncSearch cterm=underline
       autocmd ColorScheme jellybeans hi clear MatchParen
       autocmd ColorScheme jellybeans hi MatchParen ctermbg=0 ctermfg=196 cterm=underline
       autocmd ColorScheme jellybeans hi clear ColorColumn
