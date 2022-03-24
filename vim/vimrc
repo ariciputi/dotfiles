@@ -165,6 +165,8 @@ if &t_Co > 2 || has("gui_running")
   syntax on
 endif
 
+" Toggle spell checking
+nnoremap <Leader>sp :setlocal spell! spelllang=en_us<CR>
 " Toggle search highlighting
 nnoremap <silent> <Leader>hh :set hlsearch! hlsearch?<CR>
 " Highlight current word
