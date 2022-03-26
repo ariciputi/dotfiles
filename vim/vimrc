@@ -513,6 +513,7 @@ let g:ale_fixers = {
             \ }    " Enabled fixers
 let g:ale_fix_on_save = 1                            " Run fixers on file save
 let g:ale_set_highlights = 0                         " Disable highlighting (signs are enough)
+let g:ale_virtualtext_cursor = 1
 
 " ALE mappings
 nmap <Leader>ad <Plug>(ale_go_to_definition_in_split)
