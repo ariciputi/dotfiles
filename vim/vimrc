@@ -495,7 +495,7 @@ let g:python_highlight_all = 1
 " ALE settings
 let g:ale_linters_explicit = 1                       " Only run linters explicitly enabled
 let g:ale_linters = {
-            \ 'python': ['pylint'],
+            \ 'python': ['pylint', 'pylsp'],
             \ 'sh': ['shellcheck'],
             \ 'terraform': ['tflint'],
             \ 'rust': ['rls'],
