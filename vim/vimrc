@@ -181,7 +181,8 @@ nnoremap <silent> <Leader>hi :set list! list?<CR>
 
 " Set complete option
 set complete-=i " DO NOT scan included files when searching for completion
-set completeopt=longest " the colors of the menu make it hard to read and almost useless
+"set completeopt=longest " the colors of the menu make it hard to read and almost useless
+set completeopt=longest,menu " the colors of the menu make it hard to read and almost useless
 
 " SuperTab options
 let g:SuperTabLongestEnhanced=1 " (default value: 0)
@@ -494,6 +495,8 @@ let g:python_version_2 = 0
 let g:python_highlight_all = 1
 
 " ALE settings
+
+set omnifunc=ale#completion#OmniFunc
 let g:ale_linters_explicit = 1                       " Only run linters explicitly enabled
 let g:ale_linters = {
             \ 'python': ['pylint', 'pylsp'],
@@ -518,6 +521,8 @@ let g:ale_virtualtext_cursor = 1
 
 " ALE mappings
 nmap <Leader>ad <Plug>(ale_go_to_definition_in_split)
+nmap <Leader>af :ALEFindReferences -relative<CR>
+nmap <Leader>ar :ALERename<CR>
 
 " Automatically close loclist when buffer is closed
 augroup CloseLoclistWindowGroup
