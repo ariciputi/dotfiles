@@ -382,7 +382,8 @@ cnoremap <C-g> <C-c>
 
 " Open files shortcuts
 noremap <leader>ee :e <C-R>=expand("%:h") . "/" <CR>
-noremap <leader>ew :new %:p:h<CR>
+noremap <leader>ed :edit %:p:h<CR>
+noremap <leader>en :new<CR>
 
 "
 " Abbreviations
