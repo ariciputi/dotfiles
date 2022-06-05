@@ -13,9 +13,15 @@ Host raspberry
   IdentityFile ~/.ssh/id_rsa_new
   IdentitiesOnly yes
 
-Host rp4
+Host rpb
+  Hostname 192.168.84.5
+  User andrea
+  IdentityFile ~/.ssh/id_rsa_new
+  IdentitiesOnly yes
+
+Host volumio
   Hostname 192.168.84.4
-  User pi
+  User volumio
   IdentityFile ~/.ssh/id_rsa_new
   IdentitiesOnly yes
 
