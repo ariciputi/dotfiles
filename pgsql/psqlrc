@@ -30,7 +30,18 @@
 -- %[%033[<foreground code>;5;<color code>m%] (e.g. %[%033[38;5;226m%])
 -- ref. <https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit>
 
-\set PROMPT1 '%001%[%033[38;5;226m%]%002%x%001%[%033[38;5;80m%]%002%n %001%[%033[38;5;15m%]%002on %001%[%033[38;5;45m%]%002%M:%> %001%[%033[38;5;15m%]%002at %001%[%033[38;5;183m%]%002%/ %001%[%033[38;5;15m%]%002%R%# '
+-- Despite all the effort I wasn't able to have a coloured prompt working correctly.
+-- As reported in the comments of the Stack Overflow page linked above if the
+-- prompt length with all the color control characters is longer than the
+-- resulting prompt as displayed on the screen the command line misbehaves when
+-- you navigate the history (and it happens both with libedit and readline, so it
+-- might be an issue with psql itself). So for the time being I will stick with a
+-- black and white prompt.
+
+-- \set PROMPT1 '%001%[%033[38;5;226m%]%002%x%001%[%033[38;5;80m%]%002%n %001%[%033[38;5;15m%]%002on %001%[%033[38;5;45m%]%002%M:%> %001%[%033[38;5;15m%]%002at %001%[%033[38;5;183m%]%002%/ %001%[%033[38;5;15m%]%002%R%# '
+
+\set PROMPT1 'postgresql://%n@%M:%>/%/ %R%#%x '
+\set PROMPT2 '[more] %R > '
 
 -- keep a longer history
 \set HISTSIZE 9999
