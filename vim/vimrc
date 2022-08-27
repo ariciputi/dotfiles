@@ -511,7 +511,6 @@ let g:ale_open_list = 0                              " Open loclist on save only
 
 let g:ale_fixers = {
             \ 'python': ['black', 'isort'],
-            \ 'sql': ['pgformatter'],
             \ 'terraform': ['terraform'],
             \ 'rust': ['rustfmt'],
             \ }    " Enabled fixers
