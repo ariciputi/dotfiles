@@ -10,6 +10,15 @@ endif
 
 set nocompatible        " Vim is more than Vi
 
+"
+" Platform recognition settings
+"
+
+let s:uname=''
+if has('unix')
+    let s:uname = system('uname | tr -d "\n"') " Get platform name (stripping the trailing newline)
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-plug'                            " Required to have plug's docs available
@@ -66,7 +75,14 @@ Plug 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
 Plug 'w0rp/ale'                                     " Syntax checking and linting
 Plug 'jgdavey/tslime.vim'                           " Send test to a specific tmux-pane
 Plug 'vim-test/vim-test'                            " Run tests from inside vim
-Plug '/opt/homebrew/opt/fzf'                        " Enable fzf
+
+" Enable fzf (on Mac or Linux)
+if s:uname == "Darwin"
+Plug '/opt/homebrew/opt/fzf'
+elseif s:uname == "linux"
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+endif
+
 Plug 'junegunn/fzf.vim'                             " Enable fzf.vim
 Plug 'editorconfig/editorconfig-vim'                " Enable EditorConfig standard
 
@@ -117,15 +133,6 @@ let g:jellybeans_overrides = {
             \}
 
 colorscheme jellybeans
-
-"
-" Platform recognition settings
-"
-
-let s:uname=''
-if has('unix')
-    let s:uname = system('uname | tr -d "\n"') " Get platform name (stripping the trailing newline)
-endif
 
 "
 " Common option settings
