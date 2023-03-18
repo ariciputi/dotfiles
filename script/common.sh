@@ -9,7 +9,7 @@ create_relative_links() {
 
     source_dir=$1
     target_dir=$2
-    files_to_link=$( find "$source_dir" -depth 1 -type f -not -iname ".*" -not -iname "setup.sh" -not -iname "*.md" -not -iname "readme*" -exec basename {} \; | xargs echo )
+    files_to_link=$( find "$source_dir" -maxdepth 1 -type f -not -iname ".*" -not -iname "setup.sh" -not -iname "*.md" -not -iname "readme*" -exec basename {} \; | xargs echo )
 
     target_relative_path=$(relative_path $target_dir $source_dir)
 
