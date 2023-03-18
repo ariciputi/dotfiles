@@ -501,7 +501,7 @@ let g:ale_linters_explicit = 1                       " Only run linters explicit
 let g:ale_linters = {
             \ 'python': ['pylint', 'pylsp'],
             \ 'sh': ['shellcheck'],
-            \ 'terraform': ['tflint'],
+            \ 'terraform': ['tflint', 'terraform-ls'],
             \ 'rust': ['rls'],
             \ }                                      " Enabled linters
 let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
