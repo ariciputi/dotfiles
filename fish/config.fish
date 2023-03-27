@@ -64,6 +64,11 @@ if test -x $HOME/.pyenv/bin/pyenv
     status is-interactive; and pyenv virtualenv-init - | source
 end
 
+# Initialize kubectl completion if the command exists
+if type -q kubectl
+    status is-interactive; and kubectl completion fish | source
+end
+
 # Initialize brew
 if test -x /opt/homebrew/bin/brew
     eval (/opt/homebrew/bin/brew shellenv)
