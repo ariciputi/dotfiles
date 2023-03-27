@@ -525,7 +525,7 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 let g:rainbow_active = 1
 
 " Python Enhanced Syntax Highlighting
-let g:python_version_2 = 0
+let g:python_version_2 = 1
 let g:python_highlight_all = 1
 
 " Quick-scope settings
@@ -542,6 +542,11 @@ let g:ale_linters = {
             \ 'rust': ['rls'],
             \ 'fsharp': ['fsautocomplete'],
             \ }                                      " Enabled linters
+
+if s:uname == "linux" " Linux specific stuff
+    g:ale_linters['yaml'] = ['yaml-language-server']
+endif
+
 let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
 let g:ale_lint_on_save = 1                           " Run linters on file save
 let g:ale_lint_on_insert_leave = 0                   " Don't run linters when leaving insert mode
