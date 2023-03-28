@@ -68,10 +68,16 @@ DB_LABEL,connection_string
     set tunnel_pid (ps xo pid,command| grep "$tunnel_string" | grep -v grep | awk '{print $1}')
     _log "Tunnel PID: $tunnel_pid"
 
-    # TODO: replace with the actual psql command
-    psql $local_conn_string
+    set temp_psql_conf ( mktemp )
+    _log "Rewrite psqlrc file to $temp_psql_conf to replace prompt"
+    sed -E "s|^(\\\\set PROMPT1 'postgresql://%n@)(%M:%>)(/%/ %R%#%x ')|\1<$db_label:$port>\3|" "$HOME/.psqlrc" > $temp_psql_conf
 
+    PSQLRC=$temp_psql_conf psql $local_conn_string
+
+    _log "Killing background tunnel"
     kill -15 $tunnel_pid
+    _log "Removing temp psqlrc file"
+    rm $temp_psql_conf
 end
 
 function __fish_print_pgt_list
