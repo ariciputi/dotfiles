@@ -103,6 +103,7 @@ augroup ColorSchemeCustomization
       autocmd ColorScheme jellybeans hi DiffText cterm=underline ctermfg=3 ctermbg=235
       autocmd ColorScheme jellybeans hi StatusLine ctermfg=16 ctermbg=141
       autocmd ColorScheme jellybeans hi StatusLineNC ctermfg=231 ctermbg=244
+      autocmd ColorScheme jellybeans hi MyNormalNC ctermfg='NONE' ctermbg=235
 augroup END
 
 let g:jellybeans_overrides = {
@@ -233,6 +234,12 @@ if has("autocmd")
         au!
         autocmd WinEnter,InsertLeave * set cursorline
         autocmd WinLeave,InsertEnter * set nocursorline
+    augroup END
+
+    augroup WinBackground   " Toggle window background
+        au!
+        autocmd WinEnter * setlocal wincolor=
+        autocmd WinLeave * setlocal wincolor=MyNormalNC
     augroup END
 
     augroup SyntaxHighlighting   " Syntax highlighting settings
