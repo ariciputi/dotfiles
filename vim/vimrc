@@ -45,6 +45,7 @@ Plug 'pangloss/vim-javascript'                      " Better Javascript syntax a
 Plug 'rust-lang/rust.vim'                           " Rust support in vim
 Plug 'pedrohdz/vim-yaml-folds'                      " YAML folding
 Plug 'elixir-editors/vim-elixir'                    " Elixir plugin
+Plug 'unblevable/quick-scope'
 
 " --------------------------
 " Python specific plugins
@@ -501,8 +502,11 @@ let g:rainbow_active = 1
 let g:python_version_2 = 0
 let g:python_highlight_all = 1
 
-" ALE settings
+" Quick-scope settings
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+let g:qs_buftype_blacklist = ['quickfix', 'loclist']
 
+" ALE settings
 set omnifunc=ale#completion#OmniFunc
 let g:ale_linters_explicit = 1                       " Only run linters explicitly enabled
 let g:ale_linters = {
