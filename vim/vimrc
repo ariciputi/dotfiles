@@ -514,6 +514,7 @@ let g:ale_linters = {
             \ 'sh': ['shellcheck'],
             \ 'terraform': ['tflint', 'terraform-ls'],
             \ 'rust': ['rls'],
+            \ 'fsharp': ['fsautocomplete'],
             \ }                                      " Enabled linters
 let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
 let g:ale_lint_on_save = 1                           " Run linters on file save
@@ -527,12 +528,29 @@ let g:ale_fixers = {
             \ }    " Enabled fixers
 let g:ale_fix_on_save = 1                            " Run fixers on file save
 let g:ale_set_highlights = 0                         " Disable highlighting (signs are enough)
-let g:ale_virtualtext_cursor = 1
+let g:ale_completion_enabled = 1
+let g:ale_floating_preview = 1
+let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
+let g:ale_close_preview_on_insert = 1
+let g:ale_echo_cursor = 0
 
 " ALE mappings
 nmap <Leader>ad <Plug>(ale_go_to_definition_in_split)
 nmap <Leader>af :ALEFindReferences -relative<CR>
 nmap <Leader>ar :ALERename<CR>
+
+function! MyToggleHover() abort
+    if !exists('w:preview')
+        call ale#hover#ShowAtCursor()
+    else
+        call popup_close(w:preview['id'])
+        unlet w:preview
+    endif
+endfunction
+
+command! -bar MyToggleHoverCmd :call MyToggleHover()
+
+nmap <Leader>ah :MyToggleHoverCmd<CR>
 
 " Automatically close loclist when buffer is closed
 augroup CloseLoclistWindowGroup
