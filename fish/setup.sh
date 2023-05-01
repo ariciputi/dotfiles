@@ -32,6 +32,10 @@ find bin/ -type f -perm -u=x | while read bin_script; do
      cp -v "${bin_script}" "${HOME}/.local/bin/"
 done
 
+substep_info "Install Dotnet installer script."
+
+curl -L -O --output-dir "${HOME}/.local/bin" https://dot.net/v1/dotnet-install.sh && chmod +x "${HOME}/.local/bin/dotnet-install.sh"
+
 substep_info "Set fish as your default shell"
 sudo chsh -s /opt/homebrew/bin/fish $(whoami)
 
