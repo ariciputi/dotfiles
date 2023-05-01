@@ -311,8 +311,8 @@ map <Space> <Leader>
 
 " Remap CTRL-I and CTRL-O
 " (since CTRL-I is <Tab> and the latter is taken by SuperTab plugin)
-nnoremap <Leader>i <C-I>
-nnoremap <Leader>o <C-O>
+nnoremap <Leader>ji <C-I>
+nnoremap <Leader>jo <C-O>
 
 " Make mapping timeout a little bit longer
 set timeout timeoutlen=1100
