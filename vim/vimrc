@@ -54,7 +54,6 @@ Plug 'chrisbra/csv.vim', {'on' : [] }               " CSV plugin (disabled by de
 Plug 'dag/vim-fish'                                 " Support for fish-shell scripts
 Plug 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
 Plug 'rust-lang/rust.vim'                           " Rust support in vim
-Plug 'pedrohdz/vim-yaml-folds'                      " YAML folding
 Plug 'elixir-editors/vim-elixir'                    " Elixir plugin
 Plug 'towolf/vim-helm'                              " Helm plugin
 
