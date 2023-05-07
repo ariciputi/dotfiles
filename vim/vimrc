@@ -469,6 +469,7 @@ nnoremap <leader>zb :Buffers<CR>
 nnoremap <leader>zf :Files<CR>
 nnoremap <leader>zF :GFiles<CR>
 nnoremap <leader>zg :Rg<CR>
+nnoremap <leader>zc :History:<CR>
 
 " Grepper settings
 runtime plugin/grepper.vim    " initialize g:grepper with default values
