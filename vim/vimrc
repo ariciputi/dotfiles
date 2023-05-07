@@ -31,6 +31,7 @@ Plug 'christoomey/vim-system-copy'                  " Integrate vim with system 
 Plug 'nanotech/jellybeans.vim'                      " Colorscheme (at last!)
 Plug 'wellle/visual-split.vim'                      " Visual split windows
 Plug 'unblevable/quick-scope'                       " Easier line motion
+Plug 'wesQ3/vim-windowswap'                         " Easily swap windows
 
 " --------------------------
 " File-type specific plugins
@@ -350,7 +351,7 @@ nnoremap <silent> <Leader>wh <C-w>h
 nnoremap <silent> <Leader>wj <C-w>j
 nnoremap <silent> <Leader>wk <C-w>k
 nnoremap <silent> <Leader>wl <C-w>l
-nnoremap <silent> <Leader>ww <C-w>w
+"nnoremap <silent> <Leader>ww <C-w>w
 nnoremap <silent> <Leader>wq <C-w>q
 
 nnoremap <silent> <Leader>w= <C-w>=
