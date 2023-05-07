@@ -459,10 +459,6 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
-" eventually remove these if the ones below prove to be handy
-nnoremap <leader>be :Buffers<CR>
-nnoremap <leader>fe :Files<CR>
-nnoremap <leader>FE :GFiles<CR>
 
 " try alternative mappings for fzf
 nnoremap <leader>zb :Buffers<CR>
