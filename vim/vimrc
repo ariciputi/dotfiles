@@ -473,6 +473,7 @@ nnoremap <leader>gs  :Grepper -stop<cr>
 augroup GrepperFileTypeMappings
     autocmd!
     autocmd FileType python nnoremap <buffer> <localleader>gt :Grepper -cword -noprompt -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case --type py<cr>
+    autocmd FileType fsharp nnoremap <buffer> <localleader>gt :Grepper -cword -noprompt -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case --type fsharp<cr>
 augroup END
 
 " Grepper colors
