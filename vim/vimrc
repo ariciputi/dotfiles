@@ -29,6 +29,8 @@ Plug 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
 Plug 'nathanaelkane/vim-indent-guides'              " Mark indentation level
 Plug 'christoomey/vim-system-copy'                  " Integrate vim with system clipboard
 Plug 'nanotech/jellybeans.vim'                      " Colorscheme (at last!)
+Plug 'wellle/visual-split.vim'                      " Visual split windows
+Plug 'unblevable/quick-scope'                       " Easier line motion
 
 " --------------------------
 " File-type specific plugins
@@ -45,7 +47,6 @@ Plug 'pangloss/vim-javascript'                      " Better Javascript syntax a
 Plug 'rust-lang/rust.vim'                           " Rust support in vim
 Plug 'pedrohdz/vim-yaml-folds'                      " YAML folding
 Plug 'elixir-editors/vim-elixir'                    " Elixir plugin
-Plug 'unblevable/quick-scope'
 
 " --------------------------
 " Python specific plugins
