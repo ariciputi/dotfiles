@@ -106,7 +106,10 @@ augroup ColorSchemeCustomization
       autocmd ColorScheme jellybeans hi DiffText cterm=underline ctermfg=3 ctermbg=235
       autocmd ColorScheme jellybeans hi StatusLine ctermfg=16 ctermbg=141
       autocmd ColorScheme jellybeans hi StatusLineNC ctermfg=231 ctermbg=244
+      " Used to dim non-current windows
       autocmd ColorScheme jellybeans hi MyNormalNC ctermfg='NONE' ctermbg=235
+      " customize marked files highlight for Netrw
+      autocmd ColorScheme jellybeans hi! link netrwMarkFile Search
 augroup END
 
 let g:jellybeans_overrides = {
@@ -144,8 +147,23 @@ set viminfo='100,<50,:100,s10,h " things to remember (see :he viminfo)
 set formatoptions+=j    " remove comment chars when joining two comment lines
 set fillchars+=vert:│   " use long-vertical pipe as a vertical split separator char
 
-" Set Netrw ignore list
-let g:netrw_list_hide = netrw_gitignore#Hide()
+" Set Netrw plugin
+let g:netrw_list_hide = netrw_gitignore#Hide()   " Hide files ignored by git
+let g:netrw_banner = 0                           " Hide banner (to show it press 'I')
+let g:netrw_liststyle= 3                         " Select tree-style listing
+let g:netrw_winsize=25                           " Use 25% of the window
+let g:netrw_browse_split=2
+
+nnoremap <Leader>nw :Lexplore<CR>
+
+function! NetrwMapping()
+    nmap <buffer> L <CR>:Lexplore<CR>
+endfunction
+
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
 
 " Set status bar options
 set laststatus=2        " show the status line always
