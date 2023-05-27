@@ -67,6 +67,7 @@ end
 # Initialize kubectl completion if the command exists
 if type -q kubectl
     status is-interactive; and kubectl completion fish | source
+    abbr --add --position command kc kubectl
 end
 
 # Initialize brew
