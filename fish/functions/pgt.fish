@@ -1,6 +1,6 @@
 function pgt --description 'Connect to PG using a ssh tunnel'
 
-    set --function conf_file "$HOME/.config/pgt/pgt.json"
+    set conf_file "$HOME/.config/pgt/pgt.json"
 
     argparse --min-args 1 --max-args 1 'verbose' -- $argv
     or begin
@@ -16,8 +16,19 @@ function pgt --description 'Connect to PG using a ssh tunnel'
         echo
         echo 'Please create a configuration file like:
 
-DB_LABEL,connection_string
-...
+{
+    "bastion": "...",
+    "dbs": {
+        "db_name": {
+            "host": "...",
+            "port": "...", // optional
+            "username": "...",
+            "password": "...",
+            "database": "..."
+        },
+        ...
+    }
+}
 '
         return 1
     end
@@ -34,7 +45,15 @@ DB_LABEL,connection_string
     set db_label $argv[1]
     set configuration (cat $conf_file | jq --raw-output --compact-output .)
     set bastion_host (echo $configuration | jq --raw-output --compact-output .bastion)
-    set conn_string (echo $configuration | jq --raw-output --compact-output .dbs.$db_label)
+
+    # Weird hack to get around jq requirements of enclosing key name containing '-' with double quotes,
+    # which in turns requires that the entire filter expression must be enclosed in single-quotes when
+    # given inline, and fish shell not expanding variables when inside single-quotes
+    set temp_file ( mktemp )
+    printf '.dbs."%s"' $db_label > $temp_file
+    set conn_string (echo $configuration | jq --raw-output --compact-output --from-file $temp_file)
+    rm $temp_file
+
     set username (echo $conn_string | jq --raw-output --compact-output .username)
     set password (echo $conn_string | jq --raw-output --compact-output .password)
     set host (echo $conn_string | jq --raw-output --compact-output .host)
@@ -55,18 +74,21 @@ DB_LABEL,connection_string
     set local_conn_string "postgresql://$username:$password@localhost:$local_port/$database"
     _log "Local conn_string: $local_conn_string"
 
-    echo "ssh -f -N -L $tunnel_string"
-    # TODO: replace with the actual ssh tunnel command
-    sleep 20 &
+    ssh -f -N -L $tunnel_string
 
-    set tunnel_pid (ps xo pid,command| grep "sleep" | grep -v grep | awk '{print $1}')
+    set tunnel_pid (ps xo pid,command| grep "$tunnel_string" | grep -v grep | awk '{print $1}')
     _log "Tunnel PID: $tunnel_pid"
 
-    echo "psql $local_conn_string"
-    # TODO: replace with the actual psql command
-    vim
+    set temp_psql_conf ( mktemp )
+    _log "Rewrite psqlrc file to $temp_psql_conf to replace prompt"
+    sed -E "s|^(\\\\set PROMPT1 'postgresql://%n@)(%M:%>)(/%/ %R%#%x ')|\1<$db_label:$port>\3|" "$HOME/.psqlrc" > $temp_psql_conf
 
+    PSQLRC=$temp_psql_conf psql $local_conn_string
+
+    _log "Killing background tunnel"
     kill -15 $tunnel_pid
+    _log "Removing temp psqlrc file"
+    rm $temp_psql_conf
 end
 
 function __fish_print_pgt_list

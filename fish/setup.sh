@@ -13,7 +13,7 @@ create_relative_links "${BASE_DIR}" "${HOME}/.config/fish"
 create_relative_links "${BASE_DIR}/functions" "${HOME}/.config/fish/functions"
 create_relative_links "${BASE_DIR}/completions" "${HOME}/.config/fish/completions"
 
-if [ $(command -v fish) ] && [ ! $(grep -q -e "fish" /etc/shells) ]; then
+if [ $(command -v fish) ] && [[ "$OSTYPE" == "darwin"* ]] && [ ! $(grep -q -e "fish" /etc/shells) ]; then
     substep_info "Add fish to the shells catalog"
 
     sudo sh -c 'cat >> /etc/shells' <<-EOF
@@ -37,6 +37,7 @@ substep_info "Install Dotnet installer script."
 curl -L -O --output-dir "${HOME}/.local/bin" https://dot.net/v1/dotnet-install.sh && chmod +x "${HOME}/.local/bin/dotnet-install.sh"
 
 substep_info "Set fish as your default shell"
-sudo chsh -s /opt/homebrew/bin/fish $(whoami)
+fish_path=$(which fish)
+sudo chsh -s "${fish_path}" "$(whoami)"
 
 substep_success "Done with fish."

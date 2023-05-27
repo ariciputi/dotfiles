@@ -39,10 +39,14 @@ set -x EDITOR 'vim'
 set -gx  LC_ALL en_US.UTF-8
 
 # Set Rustup path
-fish_add_path $HOME/.cargo/bin
+if test -e $HOME/.cargo
+    fish_add_path $HOME/.cargo/bin
+end
 
 # Set poetry path
-fish_add_path $HOME/.poetry/bin
+if test -e $HOME/.poetry
+    fish_add_path $HOME/.poetry/bin
+end
 
 # Set dotnet path
 if test -e $HOME/.dotnet
@@ -58,6 +62,12 @@ if test -x $HOME/.pyenv/bin/pyenv
     status is-login; and pyenv init --path | source
     status is-interactive; and pyenv init - | source
     status is-interactive; and pyenv virtualenv-init - | source
+end
+
+# Initialize kubectl completion if the command exists
+if type -q kubectl
+    status is-interactive; and kubectl completion fish | source
+    abbr --add --position command kc kubectl
 end
 
 # Initialize brew

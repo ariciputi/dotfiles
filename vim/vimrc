@@ -10,6 +10,15 @@ endif
 
 set nocompatible        " Vim is more than Vi
 
+"
+" Platform recognition settings
+"
+
+let s:uname=''
+if has('unix')
+    let s:uname = system('uname | tr -d "\n"') " Get platform name (stripping the trailing newline)
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-plug'                            " Required to have plug's docs available
@@ -45,8 +54,8 @@ Plug 'chrisbra/csv.vim', {'on' : [] }               " CSV plugin (disabled by de
 Plug 'dag/vim-fish'                                 " Support for fish-shell scripts
 Plug 'pangloss/vim-javascript'                      " Better Javascript syntax and indent
 Plug 'rust-lang/rust.vim'                           " Rust support in vim
-Plug 'pedrohdz/vim-yaml-folds'                      " YAML folding
 Plug 'elixir-editors/vim-elixir'                    " Elixir plugin
+Plug 'towolf/vim-helm'                              " Helm plugin
 
 " --------------------------
 " Python specific plugins
@@ -66,7 +75,14 @@ Plug 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
 Plug 'w0rp/ale'                                     " Syntax checking and linting
 Plug 'jgdavey/tslime.vim'                           " Send test to a specific tmux-pane
 Plug 'vim-test/vim-test'                            " Run tests from inside vim
-Plug '/opt/homebrew/opt/fzf'                        " Enable fzf
+
+" Enable fzf (on Mac or Linux)
+if s:uname == "Darwin"
+Plug '/opt/homebrew/opt/fzf'
+elseif s:uname == "linux"
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+endif
+
 Plug 'junegunn/fzf.vim'                             " Enable fzf.vim
 Plug 'editorconfig/editorconfig-vim'                " Enable EditorConfig standard
 
@@ -117,15 +133,6 @@ let g:jellybeans_overrides = {
             \}
 
 colorscheme jellybeans
-
-"
-" Platform recognition settings
-"
-
-let s:uname=''
-if has('unix')
-    let s:uname = system('uname | tr -d "\n"') " Get platform name (stripping the trailing newline)
-endif
 
 "
 " Common option settings
@@ -518,7 +525,13 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 let g:rainbow_active = 1
 
 " Python Enhanced Syntax Highlighting
-let g:python_version_2 = 0
+augroup PythonGroup
+    autocmd!
+    " SRS is still and always will be Python 2, for everything else just call
+    " Python2Syntax if you want to switch to Python 2 syntax
+    "autocmd BufReadPre,BufNewFile */srs*/*.py let b:python_version_2 = 1
+augroup END
+
 let g:python_highlight_all = 1
 
 " Quick-scope settings
@@ -534,7 +547,9 @@ let g:ale_linters = {
             \ 'terraform': ['tflint', 'terraform-ls'],
             \ 'rust': ['rls'],
             \ 'fsharp': ['fsautocomplete'],
+            \ 'yaml': ['yaml-language-server'],
             \ }                                      " Enabled linters
+
 let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
 let g:ale_lint_on_save = 1                           " Run linters on file save
 let g:ale_lint_on_insert_leave = 0                   " Don't run linters when leaving insert mode
