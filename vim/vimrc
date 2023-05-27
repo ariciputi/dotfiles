@@ -467,11 +467,12 @@ nnoremap <leader>zg :Rg<CR>
 nnoremap <leader>zc :History:<CR>
 
 " Grepper settings
-runtime plugin/grepper.vim    " initialize g:grepper with default values
-let g:grepper.tools = ['git', 'rg', 'grep'] " these tools are more than enough
-let g:grepper.highlight = 1   " always highlight found matches
-let g:grepper.searchreg = 1   " query is added to the last search register and search
-let g:grepper.dir = 'repo,filecwd' " search first the repo root
+runtime plugin/grepper.vim                    " initialize g:grepper with default values
+let g:grepper.operator.prompt = 1             " always prompt when using operator
+let g:grepper.tools = ['git', 'rg', 'grep']   " these tools are more than enough
+let g:grepper.highlight = 1                   " always highlight found matches
+let g:grepper.searchreg = 1                   " query is added to the last search register and search
+let g:grepper.dir = 'repo,filecwd'            " search first the repo root
 
 " Grepper tools settings
 let g:grepper.rg.grepprg .= ' --smart-case'   " Always use smart-case when using rg
@@ -490,7 +491,9 @@ nnoremap <leader>gs  :Grepper -stop<cr>
 augroup GrepperFileTypeMappings
     autocmd!
     autocmd FileType python nnoremap <buffer> <localleader>gt :Grepper -cword -noprompt -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case --type py<cr>
+    autocmd FileType python nnoremap <buffer> <localleader>gT :Grepper -dir file -cword -noprompt -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case --type py<cr>
     autocmd FileType fsharp nnoremap <buffer> <localleader>gt :Grepper -cword -noprompt -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case --type fsharp<cr>
+    autocmd FileType fsharp nnoremap <buffer> <localleader>gT :Grepper -dir file -cword -noprompt -tool rg -grepprg rg -H --no-heading --vimgrep --smart-case --type fsharp<cr>
 augroup END
 
 " Grepper colors
