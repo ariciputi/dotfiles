@@ -525,7 +525,13 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 let g:rainbow_active = 1
 
 " Python Enhanced Syntax Highlighting
-let g:python_version_2 = 1
+augroup PythonGroup
+    autocmd!
+    " SRS is still and always will be Python 2, for everything else just call
+    " Python2Syntax if you want to switch to Python 2 syntax
+    "autocmd BufReadPre,BufNewFile */srs*/*.py let b:python_version_2 = 1
+augroup END
+
 let g:python_highlight_all = 1
 
 " Quick-scope settings
