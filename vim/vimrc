@@ -547,11 +547,8 @@ let g:ale_linters = {
             \ 'terraform': ['tflint', 'terraform-ls'],
             \ 'rust': ['rls'],
             \ 'fsharp': ['fsautocomplete'],
+            \ 'yaml': ['yaml-language-server'],
             \ }                                      " Enabled linters
-
-if s:uname == "linux" " Linux specific stuff
-    g:ale_linters['yaml'] = ['yaml-language-server']
-endif
 
 let g:ale_lint_on_text_changed = 'never'             " Never run linters automatically
 let g:ale_lint_on_save = 1                           " Run linters on file save
