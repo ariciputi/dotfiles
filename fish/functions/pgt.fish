@@ -16,8 +16,19 @@ function pgt --description 'Connect to PG using a ssh tunnel'
         echo
         echo 'Please create a configuration file like:
 
-DB_LABEL,connection_string
-...
+{
+    "bastion": "...",
+    "dbs": {
+        "db_name": {
+            "host": "...",
+            "port": "...", // optional
+            "username": "...",
+            "password": "...",
+            "database": "..."
+        },
+        ...
+    }
+}
 '
         return 1
     end
