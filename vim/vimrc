@@ -439,14 +439,6 @@ cnoreabbrev Qa qall
 cnoreabbrev Qall qall
 
 "
-" Language specific abbreviations
-"
-augroup FileTypeAbbreviations
-    autocmd!
-    autocmd FileType python inoreabbrev <buffer> pdb breakpoint()pass
-augroup END
-
-"
 " Plugin settings
 "
 
@@ -525,11 +517,20 @@ nmap <leader>P <Plug>yankstack_substitute_newer_paste
 let g:rainbow_active = 1
 
 " Python Enhanced Syntax Highlighting
+function! PythonPdb()
+    if exists('b:python_version_2') && b:python_version_2 == 1
+        return 'import pdb; pdb.set_trace()pass'
+    else
+        return 'breakpoint()pass'
+    endif
+endfunction
+
 augroup PythonGroup
     autocmd!
     " SRS is still and always will be Python 2, for everything else just call
     " Python2Syntax if you want to switch to Python 2 syntax
-    "autocmd BufReadPre,BufNewFile */srs*/*.py let b:python_version_2 = 1
+    autocmd BufReadPre,BufNewFile */srs*/*.py let b:python_version_2 = 1
+    autocmd FileType python inoreabbrev <expr> <buffer> pdb PythonPdb()
 augroup END
 
 let g:python_highlight_all = 1
