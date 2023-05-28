@@ -334,13 +334,13 @@ endif
 " Mappings and convinience commands/functions
 "
 
-" Space is a better leader
-map <Space> <Leader>
-
 " Remap CTRL-I and CTRL-O
 " (since CTRL-I is <Tab> and the latter is taken by SuperTab plugin)
-nnoremap <Leader>ji <C-I>
-nnoremap <Leader>jo <C-O>
+nnoremap i <C-I>
+nnoremap o <C-O>
+
+" Space is a better leader
+map <Space> <Leader>
 
 " Make mapping timeout a little bit longer
 set timeout timeoutlen=1100
@@ -513,8 +513,8 @@ nmap <leader>ct :GutentagsToggleEnabled<CR>
 
 " Yankstack settings
 let g:yankstack_map_keys = 0
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
+nmap p <Plug>yankstack_substitute_older_paste
+nmap P <Plug>yankstack_substitute_newer_paste
 
 " Rainbow settings
 let g:rainbow_active = 1
