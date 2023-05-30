@@ -162,6 +162,7 @@ let g:netrw_winsize=25                           " Use 25% of the window
 let g:netrw_browse_split=2
 
 nnoremap <Leader>nw :Lexplore<CR>
+nnoremap <Leader>nf :Lexplore <C-R>=expand("%:p:h")<CR><CR>
 
 function! NetrwMapping()
     nmap <buffer> L <CR>:Lexplore<CR>
