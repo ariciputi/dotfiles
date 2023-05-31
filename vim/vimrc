@@ -14,9 +14,10 @@ set nocompatible        " Vim is more than Vi
 " Platform recognition settings
 "
 
+" Get platform name (strip the trailing newline and convert to lowercase)
 let s:uname=''
 if has('unix')
-    let s:uname = system('uname | tr -d "\n"') " Get platform name (stripping the trailing newline)
+    let s:uname = system('uname | tr -d "\n" | tr "[:upper:]" "[:lower:]"')
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -77,7 +78,7 @@ Plug 'jgdavey/tslime.vim'                           " Send test to a specific tm
 Plug 'vim-test/vim-test'                            " Run tests from inside vim
 
 " Enable fzf (on Mac or Linux)
-if s:uname == "Darwin"
+if s:uname == "darwin"
 Plug '/opt/homebrew/opt/fzf'
 elseif s:uname == "linux"
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -682,7 +683,7 @@ endif
 "
 " Platform specific settings
 "
-if s:uname == "Darwin"  " Mac specific stuff
+if s:uname == "darwin"  " Mac specific stuff
 elseif s:uname == "linux" " Linux specific stuff
 else " Unkwon platform
 endif
