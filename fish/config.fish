@@ -5,6 +5,8 @@ set -g fish_prompt_pwd_dir_length 3
 
 set -g __fish_git_prompt_show_informative_status yes
 set -g __fish_git_prompt_showcolorhints yes
+set -g __fish_git_prompt_showuntrackedfiles yes
+set -g __fish_git_prompt_showstashstate yes
 
 # Fish pagination function is handy, but it is bound by default to
 # "\ep" which is deeply wired into my brain as seach history backward.
