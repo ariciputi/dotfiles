@@ -51,6 +51,36 @@ function fish_prompt --description 'Write out the prompt'
         set_color normal
     end
 
+    if test -e $HOME/.kube/config
+        set -l k8s_ctx (cat $HOME/.kube/config | grep "current-context:" | sed "s/current-context: //")
+
+        set -l cc
+        if string match --quiet --ignore-case "*prod*" $k8s_ctx
+            set cc red
+        else if string match --quiet --ignore-case "*stag*" $k8s_ctx
+            set cc yellow
+        else
+            set cc green
+        end
+
+        echo -n -s " (k8s:" (set_color $cc) $k8s_ctx (set_color normal) ")"
+        set_color normal
+    end
+
+    if test -n "$AWS_PROFILE"
+        set -l cc
+        if string match --quiet --ignore-case "*prod*" $AWS_PROFILE
+            set cc red
+        else if string match --quiet --ignore-case "*stag*" $AWS_PROFILE
+            set cc yellow
+        else
+            set cc green
+        end
+
+        echo -n -s " [aws:" (set_color $cc) $AWS_PROFILE (set_color normal) "]"
+        set_color normal
+    end
+
     # Prompt's second line
     echo
 
