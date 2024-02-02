@@ -55,6 +55,7 @@ if test -e $HOME/.dotnet
     fish_add_path $HOME/.dotnet
     set -gx DOTNET_ROOT ~/.dotnet
     set -gx DOTNET_CLI_TELEMETRY_OPTOUT true
+    abbr --add --position command dn dotnet
 end
 
 # Initialize pyenv (if installed)
