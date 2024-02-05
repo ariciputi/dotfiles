@@ -73,6 +73,11 @@ if type -q kubectl
     abbr --add --position command kc kubectl
 end
 
+# Add git abbreviation when git exists
+if type -q git
+    abbr --add --position command gt git
+end
+
 # Initialize brew
 if test -x /opt/homebrew/bin/brew
     eval (/opt/homebrew/bin/brew shellenv)
