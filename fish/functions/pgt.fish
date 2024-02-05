@@ -2,7 +2,7 @@ function pgt --description 'Connect to PG using a ssh tunnel'
 
     set conf_file "$HOME/.config/pgt/pgt.json"
 
-    argparse --min-args 1 --max-args 1 'verbose' -- $argv
+    argparse --min-args 1 --ignore-unknown 'verbose' -- $argv
     or begin
         echo "usage: pgt [--verbose] DB_LABEL"
         return 1
@@ -83,7 +83,7 @@ function pgt --description 'Connect to PG using a ssh tunnel'
     _log "Rewrite psqlrc file to $temp_psql_conf to replace prompt"
     sed -E "s|^(\\\\set PROMPT1 'postgresql://%n@)(%M:%>)(/%/ %R%#%x ')|\1<$db_label:$port>\3|" "$HOME/.psqlrc" > $temp_psql_conf
 
-    PSQLRC=$temp_psql_conf psql $local_conn_string
+    PSQLRC=$temp_psql_conf psql $argv[2..] $local_conn_string
 
     _log "Killing background tunnel"
     kill -15 $tunnel_pid
