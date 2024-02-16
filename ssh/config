@@ -19,6 +19,12 @@ Host rpb
   IdentityFile ~/.ssh/id_rsa_new
   IdentitiesOnly yes
 
+Host rpi4
+  Hostname 192.168.86.30
+  User pi
+  IdentityFile ~/.ssh/id_rsa_new
+  IdentitiesOnly yes
+
 Host volumio
   Hostname 192.168.84.4
   User volumio
