@@ -76,6 +76,7 @@ Plug 'ludovicchabant/vim-gutentags'                 " Manage tags (via ctags)
 Plug 'w0rp/ale'                                     " Syntax checking and linting
 Plug 'jgdavey/tslime.vim'                           " Send test to a specific tmux-pane
 Plug 'vim-test/vim-test'                            " Run tests from inside vim
+Plug 'keith/investigate.vim'                        " Documentation lookup
 
 " Enable fzf (on Mac or Linux)
 if s:uname == "darwin"
@@ -654,6 +655,11 @@ nnoremap <silent> <Leader>fp :Git push<CR>
 
 " EditorConfig (https://editorconfig.org/) settings
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+" Investigate settings
+
+nnoremap <silent> <Leader>dc :call investigate#Investigate('n')<CR>
+vnoremap <silent> <Leader>dc :call investigate#Investigate('v')<CR>
 
 "
 " Set the status line
