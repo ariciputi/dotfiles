@@ -25,6 +25,12 @@ Host rpi4
   IdentityFile ~/.ssh/id_rsa_new
   IdentitiesOnly yes
 
+Host rpi4-tv
+  Hostname 192.168.84.6
+  User andrea
+  IdentityFile ~/.ssh/id_rsa_new
+  IdentitiesOnly yes
+
 Host volumio
   Hostname 192.168.84.4
   User volumio
