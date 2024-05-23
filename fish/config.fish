@@ -58,6 +58,11 @@ if test -e $HOME/.dotnet
     abbr --add --position command dn dotnet
 end
 
+# Set go user's path
+if test -e $HOME/go
+    fish_add_path $HOME/go/bin
+end
+
 # Initialize pyenv (if installed)
 if test -x $HOME/.pyenv/bin/pyenv
     set -gx PYENV_ROOT $HOME/.pyenv
