@@ -487,6 +487,7 @@ xmap gs  <plug>(GrepperOperator)
 " Grepper command mappings
 nnoremap <leader>gg :Grepper<cr>
 nnoremap <leader>gf  :Grepper -tool rg -cword -noprompt<cr>
+nnoremap <leader>gF  :Grepper -tool rg -cword -noprompt -dir file <cr>
 nnoremap <leader>gb  :Grepper -tool rg -cword -noprompt -buffers<cr>
 nnoremap <leader>gs  :Grepper -stop<cr>
 
