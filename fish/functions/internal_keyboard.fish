@@ -1,3 +1,5 @@
+# See here <https://askubuntu.com/questions/160945/is-there-a-way-to-disable-a-laptops-internal-keyboard> for reference.
+
 function internal_keyboard --description 'Turn laptop internal keyboard on/off'
     argparse --min-args 1 --max-args 1 -- $argv
     or begin
