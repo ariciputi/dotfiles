@@ -78,6 +78,11 @@ if type -q git
     abbr --add --position command gt git
 end
 
+# Add abbreviation for nbgv
+if type -q nbgv
+    abbr --add --position command nb nbgv
+end
+
 # Initialize brew
 if test -x /opt/homebrew/bin/brew
     eval (/opt/homebrew/bin/brew shellenv)
