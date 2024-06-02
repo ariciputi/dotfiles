@@ -161,19 +161,10 @@ let g:netrw_list_hide = netrw_gitignore#Hide()   " Hide files ignored by git
 let g:netrw_banner = 0                           " Hide banner (to show it press 'I')
 let g:netrw_liststyle= 3                         " Select tree-style listing
 let g:netrw_winsize=25                           " Use 25% of the window
-let g:netrw_browse_split=2
+let g:netrw_altv=1                               " Split on the left
 
 nnoremap <Leader>nw :Lexplore<CR>
 nnoremap <Leader>nf :Lexplore <C-R>=expand("%:p:h")<CR><CR>
-
-function! NetrwMapping()
-    nmap <buffer> L <CR>:Lexplore<CR>
-endfunction
-
-augroup netrw_mapping
-  autocmd!
-  autocmd filetype netrw call NetrwMapping()
-augroup END
 
 " Set status bar options
 set laststatus=2        " show the status line always
