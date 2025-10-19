@@ -157,6 +157,7 @@ set formatoptions+=j    " remove comment chars when joining two comment lines
 set fillchars+=vert:│   " use long-vertical pipe as a vertical split separator char
 
 " Set Netrw plugin
+packadd! netrw
 let g:netrw_list_hide = netrw_gitignore#Hide()   " Hide files ignored by git
 let g:netrw_banner = 0                           " Hide banner (to show it press 'I')
 let g:netrw_liststyle= 3                         " Select tree-style listing
