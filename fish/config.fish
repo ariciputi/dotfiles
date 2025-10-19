@@ -50,6 +50,11 @@ if test -e $HOME/.poetry
     fish_add_path $HOME/.poetry/bin
 end
 
+# Set dotnet tools path
+if test -e $HOME/.dotnet/tools
+    fish_add_path $HOME/.dotnet/tools
+end
+
 # Set dotnet path
 if test -e $HOME/.dotnet
     fish_add_path $HOME/.dotnet
