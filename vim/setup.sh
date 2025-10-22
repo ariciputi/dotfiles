@@ -25,4 +25,12 @@ vim -u "${VIM_TEMP_DIR}/vimrc" +PlugInstall +qall
 # Remove the temporary vimrc file
 rm -r "${VIM_TEMP_DIR}"
 
+substep_info "Install vim helpers binaries."
+
+mkdir -p "${HOME}/.local/bin"
+
+find bin/ -type f -perm -u=x | while read bin_script; do
+     cp -v "${bin_script}" "${HOME}/.local/bin/"
+done
+
 substep_success "Done with vim."
