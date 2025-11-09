@@ -36,7 +36,6 @@ Plug 'tpope/vim-capslock'                           " Capslock without capslock 
 Plug 'tpope/vim-surround'                           " Make changing surround chars easier
 Plug 'maxbrunsfeld/vim-yankstack'                   " Kill-ring please!
 Plug 'nathanaelkane/vim-indent-guides'              " Mark indentation level
-Plug 'christoomey/vim-system-copy'                  " Integrate vim with system clipboard
 Plug 'nanotech/jellybeans.vim'                      " Colorscheme (at last!)
 Plug 'wellle/visual-split.vim'                      " Visual split windows
 Plug 'unblevable/quick-scope'                       " Easier line motion
@@ -142,19 +141,21 @@ colorscheme jellybeans
 
 set backspace=indent,eol,start       " allow backspacing over everything in insert mode
 
-set hidden              " hide buffers instead of closing
-set nobackup		" do not keep a backup file
-set history=1000	" keep 1000 lines of command line history
-set ruler		" show the cursor position all the time
-set cursorline          " show the cursor line
-set showcmd		" display incomplete commands
-set tildeop             " set tilde as operator
-set encoding=utf-8      " set character enconding to utf-8
-set scrolloff=2         " keep always 2 lines of context when scrolling
-set textwidth=0         " disable automatic line wrap
+set hidden                      " hide buffers instead of closing
+set nobackup		        " do not keep a backup file
+set history=1000	        " keep 1000 lines of command line history
+set ruler		        " show the cursor position all the time
+set cursorline                  " show the cursor line
+set showcmd		        " display incomplete commands
+set tildeop                     " set tilde as operator
+set encoding=utf-8              " set character enconding to utf-8
+set scrolloff=2                 " keep always 2 lines of context when scrolling
+set textwidth=0                 " disable automatic line wrap
 set viminfo='100,<50,:100,s10,h " things to remember (see :he viminfo)
-set formatoptions+=j    " remove comment chars when joining two comment lines
-set fillchars+=vert:│   " use long-vertical pipe as a vertical split separator char
+set formatoptions+=j            " remove comment chars when joining two comment lines
+set fillchars+=vert:│           " use long-vertical pipe as a vertical split separator char
+set clipboard=unnamed           " share the clipboard with the OS
+
 
 " Set Netrw plugin
 packadd! netrw
