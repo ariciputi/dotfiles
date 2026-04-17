@@ -45,7 +45,7 @@ function fish_prompt --description 'Write out the prompt'
         echo -n -s $_vcs_prompt
     end
 
-    if test $VIRTUAL_ENV
+    if test "$VIRTUAL_ENV" -a -z "$FLOX_PROMPT_ENVIRONMENTS"
         set_color yellow
         printf " (%s)" (basename $VIRTUAL_ENV)
         set_color normal
