@@ -88,9 +88,19 @@ if type -q git
     abbr --add --position command gt git
 end
 
+# Add docker abbreviation when docker exists
+if type -q docker
+    abbr --add --position command dk docker
+end
+
 # Add abbreviation for nbgv
 if type -q nbgv
     abbr --add --position command nb nbgv
+end
+
+# Add abbreviation for flox
+if type -q flox
+    abbr --add --position command flx flox
 end
 
 # Initialize brew
