@@ -40,6 +40,7 @@ Plug 'nanotech/jellybeans.vim'                      " Colorscheme (at last!)
 Plug 'wellle/visual-split.vim'                      " Visual split windows
 Plug 'unblevable/quick-scope'                       " Easier line motion
 Plug 'wesQ3/vim-windowswap'                         " Easily swap windows
+Plug 'AndrewRadev/linediff.vim'
 
 " --------------------------
 " File-type specific plugins
@@ -158,7 +159,8 @@ set clipboard=unnamed           " share the clipboard with the OS
 
 
 " Set Netrw plugin
-packadd! netrw
+" (netrw ships in $VIMRUNTIME and loads automatically -- no packadd needed;
+"  the netrw_gitignore#Hide() call below pulls in netrw's autoload on demand)
 let g:netrw_list_hide = netrw_gitignore#Hide()   " Hide files ignored by git
 let g:netrw_banner = 0                           " Hide banner (to show it press 'I')
 let g:netrw_liststyle= 3                         " Select tree-style listing
@@ -286,6 +288,7 @@ if has("autocmd")
         autocmd FileType tcl setlocal tw=80 sw=4 sts=4 et fo-=t
         autocmd FileType markdown setlocal tw=80 sw=2 sts=2 et fo+=t
         autocmd FileType terraform setlocal tw=80 sw=2 sts=2 et isk+=-
+        autocmd FileType sh setlocal tw=90 sw=2 sts=2 et fo+=croq
     augroup END
 
     augroup OnQuit
@@ -479,10 +482,11 @@ xmap gs  <plug>(GrepperOperator)
 
 " Grepper command mappings
 nnoremap <leader>gg :Grepper<cr>
-nnoremap <leader>gf  :Grepper -tool rg -cword -noprompt<cr>
-nnoremap <leader>gF  :Grepper -tool rg -cword -noprompt -dir file <cr>
-nnoremap <leader>gb  :Grepper -tool rg -cword -noprompt -buffers<cr>
-nnoremap <leader>gs  :Grepper -stop<cr>
+nnoremap <leader>gG :Grepper -tool rg -dir file<cr>
+nnoremap <leader>gf :Grepper -tool rg -cword -noprompt<cr>
+nnoremap <leader>gF :Grepper -tool rg -cword -noprompt -dir file <cr>
+nnoremap <leader>gb :Grepper -tool rg -cword -noprompt -buffers<cr>
+nnoremap <leader>gs :Grepper -stop<cr>
 
 " Grepper command mappings depending from filetype
 augroup GrepperFileTypeMappings
@@ -529,7 +533,9 @@ augroup PythonGroup
     autocmd!
     " SRS is still and always will be Python 2, for everything else just call
     " Python2Syntax if you want to switch to Python 2 syntax
-    autocmd BufReadPre,BufNewFile */srs*/*.py let b:python_version_2 = 1
+    autocmd BufReadPre,BufNewFile */*srs*/*.py let b:python_version_2 = 1
+    autocmd BufReadPre,BufNewFile */*srs*/*.py let b:ale_fix_on_save_ignore = {'python': ['black']}
+    autocmd BufReadPre,BufNewFile */*sys-milan*/*.py let b:ale_fix_on_save_ignore = {'python': ['black']}
     autocmd FileType python inoreabbrev <expr> <buffer> pdb PythonPdb()
 augroup END
 
