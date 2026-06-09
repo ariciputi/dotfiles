@@ -1,13 +1,12 @@
-vim.opt.laststatus = 2
-vim.opt.fillchars:append({
-    vert = '│',
-})
-
 return {
   {
       "rebelot/kanagawa.nvim",
       lazy = false,
       priority = 1000,
+      init = function()
+        vim.opt.laststatus = 2
+        vim.opt.fillchars:append({ vert = '│' })
+      end,
       opts = {
         dimInactive = true,
         globalStatus = true,

@@ -20,7 +20,7 @@ nnoremap o <C-O>
 ]])
 
 -- Show invisible character
-vim.keymap.set("n", "<leader>hi", "<cmd>set list! list?<CR", {silent=true})
+vim.keymap.set("n", "<leader>hi", "<cmd>set list! list?<CR>", {silent=true})
 
 -- Toggle relative line numbers
 vim.keymap.set("n", "<leader>rr", "<cmd>set relativenumber! number!<CR>", {silent=true})
@@ -52,6 +52,27 @@ vim.keymap.set("n", "<leader>lc", "<cmd>lclose<CR>", {silent=true})
 vim.keymap.set("n", "<leader>lo", "<cmd>lopen<CR>", {silent=true})
 vim.keymap.set("n", "<leader>qc", "<cmd>cclose<CR>", {silent=true})
 vim.keymap.set("n", "<leader>qo", "<cmd>copen<CR>", {silent=true})
+
+-- Grep the word under the cursor straight into the quickfix list (no picker).
+-- Uses ripgrep via 'grepprg' (set in options.lua). For the interactive
+-- Telescope version see <leader>zw.
+vim.keymap.set("n", "<leader>zW", function()
+  local word = vim.fn.expand("<cword>")
+  if word == "" then return end
+  vim.cmd("silent grep! " .. vim.fn.shellescape(word))
+  vim.cmd("copen")
+end, {silent=true, desc="Grep word under cursor into quickfix"})
+
+-- Navigate quickfix entries (e.g. after sending a Telescope grep with <C-y>)
+vim.keymap.set("n", "<leader>qn", "<cmd>cnext<CR>", {silent=true})
+vim.keymap.set("n", "<leader>qp", "<cmd>cprevious<CR>", {silent=true})
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>", {silent=true})
+vim.keymap.set("n", "[q", "<cmd>cprevious<CR>", {silent=true})
+-- Navigate loclist entries
+vim.keymap.set("n", "<leader>ln", "<cmd>lnext<CR>", {silent=true})
+vim.keymap.set("n", "<leader>lp", "<cmd>lprevious<CR>", {silent=true})
+vim.keymap.set("n", "]l", "<cmd>lnext<CR>", {silent=true})
+vim.keymap.set("n", "[l", "<cmd>lprevious<CR>", {silent=true})
 
 -- Close buffer
 vim.keymap.set("n", "<leader>bc", "<cmd>bdelete<CR>", {silent=true})
